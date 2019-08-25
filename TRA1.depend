@@ -145,3 +145,55 @@
 	"HistoricoFuncionario.h"
 	"HistoricoSalario.h"
 
+1566738919 source:/home/edmilson/Documentos/faculdade/TRA/Departamento.c
+	<stdio.h>
+	<string.h>
+	<ctype.h>
+	<locale.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacao.h"
+
+1566673584 /home/edmilson/Documentos/faculdade/TRA/Departamento.h
+
+1566673586 /home/edmilson/Documentos/faculdade/TRA/Funcionario.h
+
+1566673582 /home/edmilson/Documentos/faculdade/TRA/HistoricoDepartamento.h
+
+1566673582 /home/edmilson/Documentos/faculdade/TRA/HistoricoFuncionario.h
+
+1566673582 /home/edmilson/Documentos/faculdade/TRA/HistoricoSalario.h
+
+1566673584 /home/edmilson/Documentos/faculdade/TRA/funcoesPesquisa.h
+
+1566739274 /home/edmilson/Documentos/faculdade/TRA/funcoesVerificacao.h
+
+1566747996 source:/home/edmilson/Documentos/faculdade/TRA/Funcionario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacao.h"
+
+1566747042 source:/home/edmilson/Documentos/faculdade/TRA/main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<ctype.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+

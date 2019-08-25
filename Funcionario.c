@@ -120,7 +120,7 @@ void apresentaDadosDoFuncionario(FILE* fun, FILE *dep, int posicao){
     printf("\nId: %li",f.id);
     printf("\nMatricula: %s",f.matricula);
     printf("\nNome: %s",f.nome);
-    printf("\nData de nascimento: %s ",f.dataNascimento );
+    printf("\nData de nascimento: %s",f.dataNascimento );
     printf("\nCPF: %s",f.CPF);
     printf("\nId do departamento: %li",f.id_departamento);
     printf("\nSalario: %.2f",f.salario);
@@ -183,7 +183,7 @@ long PesquisaDepartamentoNome(FILE*dep,char *depar){
 
 //Cadastra o funcionario e também faz um registro dos dados no historico do funcionario e o salario no hsalario
 void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
-    char matricula[10],dataNascimento[12],cpf[13],nomed[40],UF[4];
+    char matricula[10],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[40],UF[4];
     int matexiste,cpfexiste,sair,testedata;
     long idexiste,pid;
 
@@ -229,13 +229,15 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
             setbuf(stdin,NULL);
 
             RetiraSequenciaDeEscape(dataNascimento);
+            strcpy(dataNascimento1,dataNascimento);
             testedata=verficaData(dataNascimento);
 
             if(testedata==0)
                 printf("\nData inválida!!!");
         }while(testedata==0);
 
-        strcpy(f.dataNascimento,dataNascimento);
+        printf("\n%s\n",dataNascimento);
+        strcpy(f.dataNascimento,dataNascimento1);
 
         do{
             printf("\nForneça o cpf: ");
