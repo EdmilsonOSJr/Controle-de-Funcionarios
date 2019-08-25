@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include<stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <locale.h>
@@ -54,7 +55,8 @@ long IncrementaID(FILE* dep){
 void CadastraDepartamento(FILE*dep,FILE*hdep){
 
     int sair;
-    //char ramal[100];
+    char ramal[50];
+    unsigned short int ramalnumero;
 
     TDepartamento d;
     THistoricoDepartamento hd;
@@ -78,9 +80,19 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
         RetiraSequenciaDeEscape(d.sigla);
 
 
-        printf("\nForneça o Ramal: ");
-        scanf("%hu",&d.Ramal);
+        do{
+            printf("\nForneça o Ramal: ");
+            setbuf(stdin,NULL);
+            fgets(ramal,50,stdin);
+            setbuf(stdin,NULL);
 
+            RetiraSequenciaDeEscape(ramal);
+            ramalnumero=atoi(ramal);
+            if(atoi(ramal)==0)
+                printf("\nO ramal deve ser um número!!!");
+        }while(atoi(ramal)==0);
+
+        d.Ramal=ramalnumero;
         d.id=IncrementaID(dep);
 
         d.id_gerente=-1;

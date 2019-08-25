@@ -145,8 +145,9 @@
 	"HistoricoFuncionario.h"
 	"HistoricoSalario.h"
 
-1566761348 source:/home/edmilson/Documentos/faculdade/TRA/Departamento.c
+1566765366 source:/home/edmilson/Documentos/faculdade/TRA/Departamento.c
 	<stdio.h>
+	<stdlib.h>
 	<string.h>
 	<ctype.h>
 	<locale.h>
