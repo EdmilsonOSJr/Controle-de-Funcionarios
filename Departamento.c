@@ -10,15 +10,7 @@
 #include"funcoesPesquisa.h"
 #include"funcoesVerificacao.h"
 
-//Recebe um ponteiro para um arquivo e verifica se o mesmo está vazio retornando 1 para vazios e 0 caso contrário
-int VerificaArquivoVazio(FILE* arq){
 
-    fseek(arq,0,SEEK_END);
-    if(ftell(arq)<=0){
-        return 1;
-    }
-    return 0;
-}//fim VerificaArquivoVazio()
 
 void imprimir(FILE*dep){
 
@@ -45,57 +37,18 @@ void imprimir(FILE*dep){
     }
 }
 
-/*realiza uma pesquisa no arquivo departamento.dat, caso encontre retorna a posição e se não encontar retorna 0 */
-int PesquisaDepartamentoID(FILE *dep,long id){
-    int pos=0;
-    TDepartamento d;
-
-    rewind(dep);
-    while(fread(&d, sizeof(d), 1, dep)){
-
-        if(d.id == id)
-            return pos;
-
-        pos++;
-
-    }
-    return -1;
-}//fim pesquisaDepartamentoID()
-
-/*realiza uma pesquisa no arquivo funcionario.dat, caso encontre retorna a posição e se não encontar retorna 0 */
-int PesquisaFunID(FILE *fun,long id){
-    int pos=0;
-    TFuncionario f;
-
-    rewind(fun);
-    while(fread(&f, sizeof(f), 1, fun)){
-        if(f.id == id)
-            return pos;
-        pos++;
-    }
-
-    return 0; //Funcionario não foi encontrada.
-
-}//fim pesquisafunID()
-
 //Essa função recebe o ponteiro para o arquivo do departamento.dat e verifica o último id, retornado o póximo válido
 long IncrementaID(FILE* dep){
-    long proximoId,tamanho;
+    long proximoId=0,tamanho;
 
     fseek(dep,0,SEEK_END);
     tamanho=ftell(dep);
     proximoId=tamanho/sizeof(TDepartamento);
 
-    return proximoId++;
+    //printf("\n%li\n",++proximoId);
+    return ++proximoId;
 
-}//fim incrementaId()
-
-//Nessa funçaõ o \n do vetor de char é trocado pelo \0
-void RetiraSequenciaDeEscape(char *palavra){
-
-    if(palavra[strlen(palavra) - 1] == '\n')
-        palavra[strlen(palavra) - 1] = '\0';
-}//fim RetiraSequenciaDeEscape()
+}//fim incrementaId(
 
 //cadastra os dados no arquivo departamento.dat
 void CadastraDepartamento(FILE*dep,FILE*hdep){

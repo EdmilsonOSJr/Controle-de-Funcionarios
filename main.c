@@ -15,12 +15,12 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
     do{
         //system("clear");//printf("\e[H\e[2J");
         for(i=0;i<2;i++)
-            printf("\n=======================================================\n");
-        printf("=======================opções=========================\n");
+            printf("\n=======================================================");
+        printf("\n====================== Opções =========================");
         for(i=0;i<2;i++)
-            printf("\n=======================================================\n");
+            printf("\n=======================================================");
 
-
+        printf("\n");
         printf("\nEscolha uma opção: \n");
         printf("\n1-Cadastrar    \n2-Consultar    \n3-Alterar      \n4-relatorio      \n5-Sair\n");
         printf("\n=> ");
@@ -35,12 +35,12 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
             case '1':
                 do{
                     for(i=0;i<2;i++)
-                        printf("\n=======================================================\n");
-                    printf("=======================cadastro=========================\n");
+                        printf("\n=======================================================");
+                    printf("\n====================== cadastro =========================");
                     for(i=0;i<2;i++)
-                        printf("\n=======================================================\n");
+                        printf("\n=======================================================");
 
-
+                    printf("\n");
                     printf("\nEscolha uma opção: \n");
                     printf("\n1-Cadastrar funcionário     \n2-Cadastrar departamento      \n3-Sair\n");
                     printf("\n=> ");
@@ -74,12 +74,12 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
             case '2':
                 do{
                     for(i=0;i<2;i++)
-                        printf("\n=======================================================\n");
-                    printf("=======================Consulta=========================\n");
+                        printf("\n=======================================================");
+                    printf("\n====================== Consulta =======================");
                     for(i=0;i<2;i++)
-                        printf("\n=======================================================\n");
+                        printf("\n=======================================================");
 
-
+                    printf("\n");
                     printf("\nEscolha uma opção: \n");
                     printf("\n1-Consultar funcionário     \n2-Consultar departamento      \n3-Sair\n");
                     printf("\n=> ");
@@ -112,15 +112,15 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
             case '3':
                 do{
                     for(i=0;i<2;i++)
-                        printf("\n=======================================================\n");
-                    printf("=======================Alterar=========================\n");
+                        printf("\n=======================================================");
+                    printf("\n====================== Alterar ========================");
                     for(i=0;i<2;i++)
-                        printf("\n=======================================================\n");
+                        printf("\n=======================================================");
 
-
+                    printf("\n");
                     printf("\nEscolha uma opção: \n");
                     printf("\n1-Alterar funcionário     \n2-Alterar departamento do funcionário      \n3-Alterar gerente do funcionário");
-                    printf("\n4-Alterar salário de um funcionário      \n5-Sair");
+                    printf("\n4-Alterar salário de um funcionário      \n5-Sair\n");
                     printf("\n=> ");
                     setbuf(stdin,NULL);
                     fgets(opcao3,3,stdin);
@@ -159,15 +159,15 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
             case '4':
                 do{
                     for(i=0;i<2;i++)
-                        printf("\n=======================================================\n");
-                    printf("=======================Relatório=========================\n");
+                        printf("\n=======================================================");
+                    printf("\n====================== Relatório ======================");
                     for(i=0;i<2;i++)
-                        printf("\n=======================================================\n");
+                        printf("\n=======================================================");
 
-
+                    printf("\n");
                     printf("\nEscolha uma opção: \n");
                     printf("\n1-Folhs de pagamento     \n2-Relató de funcionário por departamento      \n3-Histórico de salário");
-                    printf("\n4-Gerentes de um departamento      \n5-Sair");
+                    printf("\n4-Gerentes de um departamento      \n5-Sair\n");
                     printf("\n=> ");
                     setbuf(stdin,NULL);
                     fgets(opcao4,3,stdin);

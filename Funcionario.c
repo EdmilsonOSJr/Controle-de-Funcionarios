@@ -11,100 +11,6 @@
 #include"funcoesPesquisa.h"
 #include"funcoesVerificacao.h"
 
-//Verifica CPF que recebeu retornando 1 para CPF valido e 0 caso contrário
-int VerificaCpf(FILE*fun,char *cpf){
-    int i, j, digito1 = 0, digito2 = 0;
-    //printf("%d",strlen(cpf));
-
-    TFuncionario f;
-
-    rewind(fun);
-    while(fread(&f,sizeof(f),1,fun)){
-        if(strcmp(cpf,f.CPF)==0){
-            return 0;
-            printf("\ncpf repitido");
-        }
-    }
-
-    if(strlen(cpf) != 11)
-        return 0;
-    else if((strcmp(cpf,"00000000000") == 0) || (strcmp(cpf,"11111111111") == 0) || (strcmp(cpf,"22222222222") == 0) ||
-            (strcmp(cpf,"33333333333") == 0) || (strcmp(cpf,"44444444444") == 0) || (strcmp(cpf,"55555555555") == 0) ||
-            (strcmp(cpf,"66666666666") == 0) || (strcmp(cpf,"77777777777") == 0) || (strcmp(cpf,"88888888888") == 0) ||
-            (strcmp(cpf,"99999999999") == 0))
-        return 0; ///se o CPF tiver todos os números iguais ele é inválido.
-    else
-    {
-        ///digito 1---------------------------------------------------
-        for(i = 0, j = 10; i < strlen(cpf)-2; i++, j--) ///multiplica os números de 10 a 2 e soma os resultados dentro de digito1
-            digito1 += (cpf[i]-48) * j;
-        digito1 %= 11;
-        if(digito1 < 2)
-            digito1 = 0;
-        else
-            digito1 = 11 - digito1;
-        if((cpf[9]-48) != digito1)
-            return 0; ///se o digito 1 não for o mesmo que o da validação CPF é inválido
-        else
-        ///digito 2--------------------------------------------------
-        {
-            for(i = 0, j = 11; i < strlen(cpf)-1; i++, j--) ///multiplica os números de 11 a 2 e soma os resultados dentro de digito2
-                    digito2 += (cpf[i]-48) * j;
-        digito2 %= 11;
-        if(digito2 < 2)
-            digito2 = 0;
-        else
-            digito2 = 11 - digito2;
-        if((cpf[10]-48) != digito2)
-            return 0; ///se o digito 2 não for o mesmo que o da validação CPF é inválido
-        }
-    }
-    return 1;
-}//fim verificaCpf()
-
-/*Esssa função verifica se a data contém valor negativo se é valida em relação aos dias de um mês e se é maior que 20/06/1960. Retornado 0 caso
-se enquadre em algum desses casos*/
-int verficaData(char *data){
-    char *aux;
-    int v[]={31,28,31,30,31,30,31,31,30,31,30,31},dia,mes,ano,i;
-
-    aux=strtok(data,"/");
-    dia=atoi(aux);
-    aux=strtok(NULL,"/");//O ponteiro nulo é usado para se referir a pesquisa anterior, no caso '/'
-    mes=atoi(aux);
-    aux=strtok(NULL,"/");
-    ano=atoi(aux);
-
-    //se o ano for bissexto o mês de fevereiro recebe 29 dias
-    if(ano%4==0)
-        v[1]=29;
-
-    //verifica datas com valores negativos
-    if((dia<0) || (mes<0) || (ano<0))
-        return 0;
-
-
-    if((ano<1960)) // verifica se data é menor que 20/06/1960
-        return 0;
-    else
-        if((mes<06) && ano==1960)
-            return 0;
-        else
-            if((dia<20) && (mes=06) && (ano==1960))
-                return 0;
-
-
-    //verifica se o dia não ultrapassa o limeite de dia de determinado mês
-    for(i=0;i<11;i++){
-        if(mes==i+1)
-            if(dia>v[i])
-                return 0;
-    }
-
-    return 1;
-
-}//fim verificaData()
-
 //Função usada para imprimir os dados de um funcionário incluindo seu departamento
 void apresentaDadosDoFuncionario(FILE* fun, FILE *dep, int posicao){
 
@@ -147,39 +53,9 @@ long IncrementaIdFun(FILE* fun){
     tamanho=ftell(fun);
     proximoId=tamanho/sizeof(TFuncionario);
 
-    return proximoId++;
+    return ++proximoId;
 
 }//fim IncrementaIdFun()
-
-//Retorna a posição da matricula caso exista, senão retorna -1
-int PesquisaMatricula(FILE *fun,char *matricula){
-    int pos=0;
-    TFuncionario f;
-
-    rewind(fun);
-
-    while(fread(&f, sizeof(f), 1, fun)){
-        if(strcmp(f.matricula,matricula)==0)
-            return pos;
-        pos++;
-
-    }
-
-    return -1;
-}//fim PesquisaMatricula()
-
-//Recebe o ponteiro do arquivo e o nome do departamento, retornando seu id caso exista e 0 caso contraário
-long PesquisaDepartamentoNome(FILE*dep,char *depar){
-
-    TDepartamento d;
-
-    rewind(dep);
-    while(fread(&d, sizeof(d), 1, dep)){
-        if(strcmp(d.nome,depar)==0)
-            return d.id;
-    }
-    return 0;
-}//fim PesquisaDepartamentoNome()
 
 //Cadastra o funcionario e também faz um registro dos dados no historico do funcionario e o salario no hsalario
 void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
@@ -783,7 +659,7 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
 void RelatorioGerenteDeDepartamento(FILE *dep,FILE *fun){
     char sair[3],nome[30];
     long dexiste;
-    int pos;
+    int pos,posicaodep;
 
     TDepartamento d;
     TFuncionario f;
@@ -801,15 +677,17 @@ void RelatorioGerenteDeDepartamento(FILE *dep,FILE *fun){
         RetiraSequenciaDeEscape(nome);
 
         dexiste=PesquisaDepartamentoNome(dep,nome);
-
+        printf("%li",dexiste);
         if(dexiste==0)
             printf("\nDepartamento não encontrado!!!");
         else{
-
-            fseek(dep,PesquisaDepartamentoID(dep,dexiste)*sizeof(f),SEEK_SET);
+            posicaodep=PesquisaDepartamentoID(dep,dexiste);
+            printf("%d",posicaodep);
+            fseek(dep,posicaodep*sizeof(d),SEEK_SET);
             fread(&d,sizeof(d),1,dep);
-            if(d.id_gerente==0)
-                printf("\nNenhum funcionário cadastrado!!!");
+            printf("%li",d.id_gerente);
+            if(d.id_gerente==-1)
+                printf("\nNenhum funcionário cadastrado como gerente!!!");
             else{
 
                 pos=PesquisaFunID(fun,d.id_gerente);
@@ -819,15 +697,11 @@ void RelatorioGerenteDeDepartamento(FILE *dep,FILE *fun){
         }
 
     }
-
-
-
-    printf("Forneça o nome do departamento:");
     printf("\nDeseja sair?\n");
     printf("\n1-Sim     2-Não\n");
     setbuf(stdin,NULL);
     fgets(sair,3,stdin);
     setbuf(stdin,NULL);
 
-    }while(sair[0]!='2');
+    }while(sair[0]!='1');
 }//fim RelatorioGerenteDeDepartamento()
