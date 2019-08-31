@@ -226,3 +226,104 @@
 	"funcoesPesquisa.h"
 	"funcoesVerificacao.h"
 
+1567288128 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/Departamento.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<locale.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacao.h"
+	"funcoesAuxiliares.h"
+
+1567252872 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/Departamento.h
+
+1567281365 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/Funcionario.h
+
+1567252872 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/HistoricoDepartamento.h
+
+1567252872 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/HistoricoFuncionario.h
+
+1567252872 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/HistoricoSalario.h
+
+1567252872 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesPesquisa.h
+
+1567252872 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesVerificacao.h
+
+1567287912 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/Funcionario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacao.h"
+	"funcoesAuxiliares.h"
+
+1567252872 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesPesquisa.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacao.h"
+
+1567258287 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesVerificacao.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacao.h"
+
+1567288137 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<ctype.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesAuxiliares.h"
+
+1567285571 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesAuxiliares.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	<time.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacao.h"
+
+1567285566 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesAuxiliares.h
+

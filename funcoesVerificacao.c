@@ -115,9 +115,3 @@ int VerificaArquivoVazio(FILE* arq){
     return 0;
 }//fim VerificaArquivoVazio()
 
-//Nessa funçaõ o \n do vetor de char é trocado pelo \0
-void RetiraSequenciaDeEscape(char *palavra){
-
-    if(palavra[strlen(palavra) - 1] == '\n')
-        palavra[strlen(palavra) - 1] = '\0';
-}//fim RetiraSequenciaDeEscape()

@@ -42,6 +42,10 @@
 		<Unit filename="HistoricoDepartamento.h" />
 		<Unit filename="HistoricoFuncionario.h" />
 		<Unit filename="HistoricoSalario.h" />
+		<Unit filename="funcoesAuxiliares.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="funcoesAuxiliares.h" />
 		<Unit filename="funcoesPesquisa.c">
 			<Option compilerVar="CC" />
 		</Unit>

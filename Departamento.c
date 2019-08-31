@@ -10,8 +10,75 @@
 #include"HistoricoSalario.h"
 #include"funcoesPesquisa.h"
 #include"funcoesVerificacao.h"
+#include "funcoesAuxiliares.h"
 
 
+void imprimir2(FILE* hfun){
+    THistoricoDepartamento hf;
+
+    fseek(hfun,0,SEEK_END);//Usa para ver se tem dados no arquivo ou não
+    if(ftell(hfun)<=0){
+        //printf("%d",ftell(dep));
+        printf("\nSem dados no arquio");
+    }
+    else{
+        rewind(hfun);
+        while(fread(&hf, sizeof(hf), 1, hfun)){
+            printf("\n---------------------\n");
+
+            printf("\n%li",hf.id_departamento);
+            printf("\n%li",hf.id_gerente);
+            printf("\n%s",hf.data);
+
+
+        }
+    }
+}
+
+void imprimir3(FILE* hfun){
+    THistoricoSalario hf;
+
+    fseek(hfun,0,SEEK_END);//Usa para ver se tem dados no arquivo ou não
+    if(ftell(hfun)<=0){
+        //printf("%d",ftell(dep));
+        printf("\nSem dados no arquio");
+    }
+    else{
+        rewind(hfun);
+        while(fread(&hf, sizeof(hf), 1, hfun)){
+            printf("\n---------------------\n");
+
+            printf("\n%li",hf.id_funcionario);
+            printf("\n%hu",hf.mes);
+            printf("\n%hu",hf.ano);
+            printf("\n%f",hf.salario);
+
+
+        }
+    }
+}
+
+void imprimir4(FILE* hfun){
+    THistoricoFuncionario hf;
+
+    fseek(hfun,0,SEEK_END);//Usa para ver se tem dados no arquivo ou não
+    if(ftell(hfun)<=0){
+        //printf("%d",ftell(dep));
+        printf("\nSem dados no arquio");
+    }
+    else{
+        rewind(hfun);
+        while(fread(&hf, sizeof(hf), 1, hfun)){
+            printf("\n---------------------\n");
+
+            printf("\n%s",hf.data);
+            printf("\n%li",hf.id_departamento);
+            printf("\n%li",hf.id_funcionario);
+
+
+        }
+    }
+}
 
 void imprimir(FILE*dep){
 
@@ -38,25 +105,13 @@ void imprimir(FILE*dep){
     }
 }
 
-//Essa função recebe o ponteiro para o arquivo do departamento.dat e verifica o último id, retornado o póximo válido
-long IncrementaID(FILE* dep){
-    long proximoId=0,tamanho;
-
-    fseek(dep,0,SEEK_END);
-    tamanho=ftell(dep);
-    proximoId=tamanho/sizeof(TDepartamento);
-
-    //printf("\n%li\n",++proximoId);
-    return ++proximoId;
-
-}//fim incrementaId(
-
 //cadastra os dados no arquivo departamento.dat
 void CadastraDepartamento(FILE*dep,FILE*hdep){
 
     int sair;
-    char ramal[50];
+    char ramal[50],nomeDepartamento[40],data[11];
     unsigned short int ramalnumero;
+    long nomeExiste;
 
     TDepartamento d;
     THistoricoDepartamento hd;
@@ -65,17 +120,27 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
         do{
             printf("\nForneça o nome do departamento: ");
             setbuf(stdin,NULL);
-            fgets(d.nome,40,stdin);
+            fgets(nomeDepartamento,40,stdin);
             setbuf(stdin,NULL);
+            flushIn();
 
-        }while(strlen(d.nome) == 1);//verifica o tamanho enquanto n for maior que 1 ele faz a pergunta novamente
+            RetiraSequenciaDeEscape(nomeDepartamento);
 
-        RetiraSequenciaDeEscape(d.nome);
+            nomeExiste=PesquisaDepartamentoNome(dep,nomeDepartamento);
+
+            if(nomeExiste!=0)
+                printf("\nNome existente!!!");
+
+        }while((strlen(nomeDepartamento) == 0) || (nomeExiste!=0));//verifica o tamanho enquanto n for maior que 1 ele faz a pergunta novamente
+
+
+        strcpy(d.nome,nomeDepartamento);
 
         printf("\nForneça a sigla do departamento: ");
         setbuf(stdin,NULL);
         fgets(d.sigla,10,stdin);
         setbuf(stdin,NULL);
+        flushIn();
 
         RetiraSequenciaDeEscape(d.sigla);
 
@@ -86,10 +151,12 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
             fgets(ramal,50,stdin);
             setbuf(stdin,NULL);
 
+            flushIn();
             RetiraSequenciaDeEscape(ramal);
             ramalnumero=atoi(ramal);
+
             if(atoi(ramal)==0)
-                printf("\nO ramal deve ser um número!!!");
+                printf("\nO ramal deve ser um número!!!\n");
         }while(atoi(ramal)==0);
 
         d.Ramal=ramalnumero;
@@ -97,21 +164,30 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
 
         d.id_gerente=-1;
 
+
+        printf("\nForneça a data atual (dia/mes/ano): ");
+        setbuf(stdin,NULL);
+        fgets(data,11,stdin);
+        setbuf(stdin,NULL);
+
+        RetiraSequenciaDeEscape(data);
+
+        strcpy(hd.data,data);
+
         fseek(dep,0,SEEK_END);
         fwrite(&d,sizeof(d),1,dep);
 
         hd.id_departamento=d.id;
         hd.id_gerente=d.id_gerente;
 
-        printf("\nTestando\n");
 
         fseek(hdep,0,SEEK_END);
         fwrite(&hd,sizeof(hd),1,hdep);
 
-        printf("\nDeseja sair?\n");
-        printf("\n1-Sim     2-Não\n");
-        printf("\n=> ");
-        scanf("%d",&sair);
+        fflush(dep);
+        fflush(hdep);
+
+       sair=sairDoLoop();
 
     }while(sair!=1);
 
@@ -122,7 +198,7 @@ void AlterarGerente(FILE*dep,FILE*fun,FILE*hdep){
 
     int posicao,posicaoNovoGerente,sair;
     long idDepartamento;
-    char nomeDepartamento[40],matriculaDoNovoGerente[10];
+    char nomeDepartamento[40],matriculaDoNovoGerente[10],data[11];
 
     TDepartamento d;
     TFuncionario f;
@@ -149,8 +225,6 @@ void AlterarGerente(FILE*dep,FILE*fun,FILE*hdep){
 
                 posicao=PesquisaDepartamentoID(dep,idDepartamento);
 
-                printf("\n%d\n",posicao);
-
                 fseek(dep,posicao*sizeof(d),SEEK_SET);
                 fread(&d,sizeof(d),1,dep);
 
@@ -172,9 +246,20 @@ void AlterarGerente(FILE*dep,FILE*fun,FILE*hdep){
                         printf("\nNenhum funcionário com essa matrícula cadastrado\n");
                     else{
 
-                        printf("\n%d\n",posicaoNovoGerente);
                         fseek(fun,posicaoNovoGerente*sizeof(f),SEEK_SET);
                         fread(&f,sizeof(f),1,fun);
+
+
+
+                        printf("\nForneça a data da modificação (dia/mes/ano): ");
+                        setbuf(stdin,NULL);
+                        fgets(data,11,stdin);
+                        setbuf(stdin,NULL);
+                        flushIn();
+
+                        RetiraSequenciaDeEscape(data);
+                        strcpy(hd.data,data);
+
 
                         d.id_gerente=f.id;
                         hd.id_gerente=f.id;
@@ -185,15 +270,16 @@ void AlterarGerente(FILE*dep,FILE*fun,FILE*hdep){
 
                         fseek(hdep,0,SEEK_END);
                         fwrite(&hd,sizeof(hd),1,hdep);
+
+                        fflush(dep);
+                        fflush(hdep);
                     }
                 }
             }
 
         }
 
-        printf("\nDeseja sair?\n");
-        printf("\n1-Sim     2-Não\n");
-        scanf("%d",&sair);
+        sair=sairDoLoop();
 
     }while(sair!=1);
 }//fim AlterarGerente()

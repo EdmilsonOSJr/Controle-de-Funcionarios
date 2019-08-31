@@ -28,6 +28,6 @@ void AlterarSalario(FILE*,FILE*);
 void AlterarDepartamento(FILE*,FILE*,FILE*);
 void AlterarFuncionario(FILE*,FILE*,FILE*,FILE*);
 void RelatorioGerenteDeDepartamento(FILE*,FILE*);
-
+void historicoDeSalario(FILE*,FILE*);
 
 #endif // FUNCIONARIO_H_INCLUDED
