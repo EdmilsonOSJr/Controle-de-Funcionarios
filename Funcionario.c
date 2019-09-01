@@ -15,7 +15,7 @@
 
 //Cadastra o funcionario e também faz um registro dos dados no historico do funcionario e o salario no hsalario
 void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
-    char matricula[10],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[40],UF[4],data[11];
+    char matricula[10],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[40],UF[4],data[11],nomeFuncionario[60],rua[40],email[40],CEP[9],cidade[40],complemento[30], bairro[30];
     int matexiste,cpfexiste,sair,testedata;
     long idexiste,pid;
     unsigned short int dia,mes,ano;
@@ -45,12 +45,15 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
         do{
             printf("\nForneça o nome do funcionário: ");
             setbuf(stdin,NULL);
-            fgets(f.nome,60,stdin);
+            fgets(nomeFuncionario,60,stdin);
             setbuf(stdin,NULL);
             flushIn();
-        }while(strlen(f.nome) == 1);
 
-        RetiraSequenciaDeEscape(f.nome);
+            RetiraSequenciaDeEscape(nomeFuncionario);
+        }while(strlen(nomeFuncionario) == 0);
+
+        strcpy(f.nome,nomeFuncionario);
+
 
         pid=IncrementaIdFun(fun);
         f.id=pid;
@@ -77,7 +80,7 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
         do{
             printf("\nForneça o cpf: ");
             setbuf(stdin,NULL);
-            fgets(cpf,13,stdin);
+            fgets(cpf,12,stdin);
             setbuf(stdin,NULL);
             flushIn();
 
@@ -119,38 +122,45 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
 
                 printf("\nForneça a rua do funcionario: ");
                 setbuf(stdin,NULL);
-                fgets(f.rua,40,stdin);
+                fgets(rua,40,stdin);
                 setbuf(stdin,NULL);
                 flushIn();
 
-                RetiraSequenciaDeEscape(f.rua);
+                RetiraSequenciaDeEscape(rua);
+
+                strcpy(f.rua,rua);
 
                 printf("\nForneça o bairro do funcionario: ");
                 setbuf(stdin,NULL);
-                fgets(f.bairro,30,stdin);
+                fgets(bairro,30,stdin);
                 setbuf(stdin,NULL);
                 flushIn();
 
-                RetiraSequenciaDeEscape(f.bairro);
+                RetiraSequenciaDeEscape(bairro);
+
+                strcpy(f.bairro,bairro);
 
                 printf("\nForneça o numero da casa do funcionario: ");
                 scanf("%ui",&f.Numero);
 
                 printf("\nForneça o complemento da casa do funcionario: ");
                 setbuf(stdin,NULL);
-                fgets(f.complemento,30,stdin);
+                fgets(complemento,30,stdin);
                 setbuf(stdin,NULL);
                 flushIn();
 
-                RetiraSequenciaDeEscape(f.complemento);
+                RetiraSequenciaDeEscape(complemento);
+
+                strcpy(f.complemento,complemento);
 
                 printf("\nForneça a cidade do funcionario: ");
                 setbuf(stdin,NULL);
-                fgets(f.cidade,40,stdin);
+                fgets(cidade,40,stdin);
                 setbuf(stdin,NULL);
                 flushIn();
 
-                RetiraSequenciaDeEscape(f.cidade);
+                RetiraSequenciaDeEscape(cidade);
+                strcpy(f.cidade,cidade);
 
                 printf("\nForneça o UF do funcionario: ");
                 setbuf(stdin,NULL);
@@ -164,19 +174,21 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
 
                 printf("\nForneça o CEP do funcionario: ");
                 setbuf(stdin,NULL);
-                fgets(f.CEP,9,stdin);
+                fgets(CEP,9,stdin);
                 setbuf(stdin,NULL);
                 flushIn();
 
-                RetiraSequenciaDeEscape(f.CEP);
+                RetiraSequenciaDeEscape(CEP);
+                strcpy(f.CEP,CEP);
 
                 printf("\nForneça o email do funcionario: ");
                 setbuf(stdin,NULL);
-                fgets(f.email,40,stdin);
+                fgets(email,40,stdin);
                 setbuf(stdin,NULL);
                 flushIn();
 
                 RetiraSequenciaDeEscape(f.email);
+                strcpy(f.email,email);
 
                 printf("\nForneça a data atual (dia/mes/ano): ");
                 setbuf(stdin,NULL);
@@ -483,7 +495,7 @@ void AlterarDepartamento(FILE*fun,FILE*hfun,FILE*dep){
 salario no historico de salario*/
 void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
     unsigned short int dia,mes,ano;
-    char matricula[10],dataNascimento[12],dataNascimento1[11],cpf[13],nomed[40],UF[4],data[11];
+    char matricula[10],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[40],UF[4],data[11],nomeFuncionario[60],rua[40],email[40],CEP[9],cidade[40],complemento[30], bairro[30];
     int cpfexiste,sair,posicao,testeData;
     long idexiste;
 
@@ -502,6 +514,7 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
             setbuf(stdin,NULL);
             fgets(matricula,10,stdin);
             setbuf(stdin,NULL);
+            flushIn();
 
             RetiraSequenciaDeEscape(matricula);
 
@@ -517,12 +530,14 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                 do{
                     printf("\nForneça o nome do funcionário: ");
                     setbuf(stdin,NULL);
-                    fgets(f.nome,60,stdin);
+                    fgets(nomeFuncionario,60,stdin);
                     setbuf(stdin,NULL);
-                }while(strlen(f.nome) == 1);
+                    flushIn();
 
-                RetiraSequenciaDeEscape(f.nome);
+                    RetiraSequenciaDeEscape(nomeFuncionario);
+                }while(strlen(nomeFuncionario) == 0);
 
+                strcpy(f.nome,nomeFuncionario);
                 hf.id_funcionario=f.id;
                 hs.id_funcionario=f.id;
 
@@ -531,6 +546,7 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                     setbuf(stdin,NULL);
                     fgets(dataNascimento,12,stdin);
                     setbuf(stdin,NULL);
+                    flushIn();
 
                     RetiraSequenciaDeEscape(dataNascimento);
                     strcpy(dataNascimento1,dataNascimento);
@@ -547,6 +563,7 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                     setbuf(stdin,NULL);
                     fgets(cpf,13,stdin);
                     setbuf(stdin,NULL);
+                    flushIn();
                     //printf("\n%d\n",strlen(cpf));
                     RetiraSequenciaDeEscape(cpf);
                     //printf("\n%d\n",strlen(cpf));
@@ -559,11 +576,11 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
 
                 strcpy(f.CPF,cpf);
 
-                setbuf(stdin,NULL);
                 printf("\nForneça o nome do departamento desse funcionário: ");
                 setbuf(stdin,NULL);
                 fgets(nomed,40,stdin);
                 setbuf(stdin,NULL);
+                flushIn();
 
 
                 RetiraSequenciaDeEscape(nomed);
@@ -587,39 +604,49 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
 
                         printf("\nForneça a rua do funcionario: ");
                         setbuf(stdin,NULL);
-                        fgets(f.rua,40,stdin);
+                        fgets(rua,40,stdin);
                         setbuf(stdin,NULL);
+                        flushIn();
 
-                        RetiraSequenciaDeEscape(f.rua);
+                        RetiraSequenciaDeEscape(rua);
+                        strcpy(f.rua,rua);
+
 
                         printf("\nForneça o bairro do funcionario: ");
                         setbuf(stdin,NULL);
-                        fgets(f.bairro,30,stdin);
+                        fgets(bairro,30,stdin);
                         setbuf(stdin,NULL);
+                        flushIn();
 
-                        RetiraSequenciaDeEscape(f.bairro);
+                        RetiraSequenciaDeEscape(bairro);
+                        strcpy(f.bairro,bairro);
 
                         printf("\nForneça o numero da casa do funcionario: ");
                         scanf("%ui",&f.Numero);
 
                         printf("\nForneça o complemento da casa do funcionario: ");
                         setbuf(stdin,NULL);
-                        fgets(f.complemento,30,stdin);
+                        fgets(complemento,30,stdin);
                         setbuf(stdin,NULL);
+                        flushIn();
 
-                        RetiraSequenciaDeEscape(f.complemento);
+                        RetiraSequenciaDeEscape(complemento);
+                        strcpy(f.complemento,complemento);
 
                         printf("\nForneça a cidade do funcionario: ");
                         setbuf(stdin,NULL);
-                        fgets(f.cidade,40,stdin);
+                        fgets(cidade,40,stdin);
                         setbuf(stdin,NULL);
+                        flushIn();
 
-                        RetiraSequenciaDeEscape(f.cidade);
+                        RetiraSequenciaDeEscape(cidade);
+                        strcpy(f.cidade,cidade);
 
                         printf("\nForneça o UF do funcionario: ");
                         setbuf(stdin,NULL);
                         fgets(UF,4,stdin);
                         setbuf(stdin,NULL);
+                        flushIn();
 
                         RetiraSequenciaDeEscape(UF);
 
@@ -627,17 +654,21 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
 
                         printf("\nForneça o CEP do funcionario: ");
                         setbuf(stdin,NULL);
-                        fgets(f.CEP,9,stdin);
+                        fgets(CEP,9,stdin);
                         setbuf(stdin,NULL);
+                        flushIn();
 
-                        RetiraSequenciaDeEscape(f.CEP);
+                        RetiraSequenciaDeEscape(CEP);
+                        strcpy(f.CEP,CEP);
 
                         printf("\nForneça o email do funcionario: ");
                         setbuf(stdin,NULL);
-                        fgets(f.email,40,stdin);
+                        fgets(email,40,stdin);
                         setbuf(stdin,NULL);
+                        flushIn();
 
-                        RetiraSequenciaDeEscape(f.email);
+                        RetiraSequenciaDeEscape(email);
+                        strcpy(f.email,email);
 
                         printf("\nForneça a data da modificação (dia/mes/ano): ");
                         setbuf(stdin,NULL);
@@ -729,6 +760,8 @@ void RelatorioGerenteDeDepartamento(FILE *dep,FILE *fun){
 void historicoDeSalario(FILE* hsal,FILE*fun){
     char matricula[10];
     long matexiste;
+    unsigned short int mesInicial,mesFinal,anoInicial,anoFinal;
+    int cont=0;
 
     THistoricoSalario hs;
     TFuncionario f;
@@ -749,15 +782,27 @@ void historicoDeSalario(FILE* hsal,FILE*fun){
     fseek(fun,matexiste*sizeof(f),SEEK_SET);
     fread(&f,sizeof(f),1,fun);
 
+    printf("\nForneça os anos inicial e final: ");
+    scanf("\n%hu%hu",&anoInicial,&anoFinal);
+
+    printf("\nForneça os meses inicial e final: ");
+    scanf("\n%hu%hu",&mesInicial,&mesFinal);
+
 
     rewind(hsal);
     while(fread(&hs,sizeof(hs),1,hsal)){
         if(f.id==hs.id_funcionario){
-            printf("\n===================================");
-            printf("\nMes %u : %.2f",hs.mes,hs.salario);
-            printf("\nAno %u : %.2f",hs.ano,hs.salario);
-            printf("\n===================================\n");
+            if((hs.ano>=anoInicial) && (hs.ano<=anoFinal))
+                if((hs.mes>=mesInicial) && (hs.mes<=mesFinal)){
+                    printf("\n===================================");
+                    printf("\nMes %u : %.2f",hs.mes,hs.salario);
+                    printf("\nAno %u : %.2f",hs.ano,hs.salario);
+                    printf("\n===================================\n");
+                    cont++;
+                }
         }
     }
+    if(cont==0)
+        printf("\nFuncionário sem histórico!!!");
 
 }
