@@ -129,7 +129,7 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
             nomeExiste=PesquisaDepartamentoNome(dep,nomeDepartamento);
 
             if(nomeExiste!=0)
-                printf("\nNome existente!!!");
+                printf("\nNome existente!!!\n");
 
         }while((strlen(nomeDepartamento) == 0) || (nomeExiste!=0));//verifica o tamanho enquanto n for maior que 1 ele faz a pergunta novamente
 

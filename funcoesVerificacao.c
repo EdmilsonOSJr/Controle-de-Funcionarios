@@ -22,7 +22,7 @@ int VerificaCpf(FILE*fun,char *cpf){
     while(fread(&f,sizeof(f),1,fun)){
         if(strcmp(cpf,f.CPF)==0){
             return 0;
-            printf("\ncpf repitido");
+            printf("\ncpf repitido\n");
         }
     }
 

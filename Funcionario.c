@@ -14,7 +14,7 @@
 
 //Cadastra o funcionario e também faz um registro dos dados no historico do funcionario e o salario no hsalario
 void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
-    char matricula[10],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[40],UF[4],dataAt[11],nomeFuncionario[60],rua[40],email[40],CEP[9],cidade[40],complemento[30], bairro[30];
+    char matricula[10],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[40],UF[4],dataAt[11],nomeFuncionario[60],rua[40],email[40],CEP[10],cidade[40],complemento[30], bairro[30];
     int matexiste,cpfexiste,sair,testedata,dia,mes,ano;
     long idexiste,pid;;
 
@@ -32,9 +32,8 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
             RetiraSequenciaDeEscape(matricula);
 
             matexiste=PesquisaMatricula(fun,matricula);
-            printf("\n%d\n",matexiste);
             if(matexiste!=-1)
-                printf("\nMatrícula existente!!!");
+                printf("\nMatrícula existente!!!\n");
         }while(matexiste!=-1);
 
         strcpy(f.matricula,matricula);
@@ -75,14 +74,15 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
         do{
             printf("\nForneça o cpf: ");
             setbuf(stdin,NULL);
-            fgets(cpf,12,stdin);
+            fgets(cpf,13,stdin);
             setbuf(stdin,NULL);
 
             RetiraSequenciaDeEscape(cpf);
+            printf("%d",strlen(cpf));
             cpfexiste=VerificaCpf(fun,cpf);
 
             if(cpfexiste==0)
-                printf("\nCpf inválido!!!");
+                printf("\nCpf inválido!!!\n");
 
         }while(cpfexiste==0);
 
@@ -164,7 +164,7 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
 
                 printf("\nForneça o CEP do funcionario: ");
                 setbuf(stdin,NULL);
-                fgets(CEP,9,stdin);
+                fgets(CEP,10,stdin);
                 setbuf(stdin,NULL);
 
                 RetiraSequenciaDeEscape(CEP);
@@ -228,7 +228,7 @@ void ConsultaFuncionarioporMatricula(FILE*fun,FILE*dep){
             posicao=PesquisaMatricula(fun,matricula);
 
             if(posicao==-1)//Verifica se o funcionario existe
-                printf("\nFuncionário nao encontrado!!!");
+                printf("\nFuncionário nao encontrado!!!\n");
             else{
 
                 apresentaDadosDoFuncionario(fun,dep,posicao);
@@ -250,7 +250,7 @@ void FolhaDePagamento(FILE*fun){
     TFuncionario f;
 
     if(VerificaArquivoVazio(fun)==1)
-        printf("\nNenhum funcionario cadastrado!!!");
+        printf("\nNenhum funcionario cadastrado!!!\n");
     else{
         do{
         printf("\nForneça a matrícula: ");
@@ -263,7 +263,7 @@ void FolhaDePagamento(FILE*fun){
         posicao=PesquisaMatricula(fun,matricula);
 
         if(posicao==-1)
-            printf("\nFuncionário nao encontrado!!!");
+            printf("\nFuncionário nao encontrado!!!\n");
         else{
                 fseek(fun,posicao*sizeof(f),SEEK_SET);
                 fread(&f,sizeof(f),1,fun);
@@ -300,7 +300,7 @@ void RelatorioFuncionariosPorDepartamento(FILE *fun,FILE *dep){
 
 
     if(VerificaArquivoVazio(dep)==1)
-        printf("\nNenhum departamento cadastrado!!!");
+        printf("\nNenhum departamento cadastrado!!!\n");
     else{
 
         rewind(dep);
@@ -340,7 +340,7 @@ void AlterarSalario(FILE*fun,FILE*hsal){
     THistoricoSalario hs;
 
     if(VerificaArquivoVazio(fun)==1)
-        printf("\nNenhum funcionario cadastrado!!!");
+        printf("\nNenhum funcionario cadastrado!!!\n");
     else{
 
     do{
@@ -353,7 +353,7 @@ void AlterarSalario(FILE*fun,FILE*hsal){
         matexiste=PesquisaMatricula(fun,matricula);
 
         if(matexiste==-1)
-            printf("\nFuncionario inexistente!!!");
+            printf("\nFuncionario inexistente!!!\n");
         else{
 
                 printf("\nForneça o novo salario: ");
@@ -399,10 +399,10 @@ void AlterarDepartamento(FILE*fun,FILE*hfun,FILE*dep){
     THistoricoFuncionario hf;
 
     if(VerificaArquivoVazio(fun)==1)
-        printf("\nNenhum funcionario cadastrado!!!");
+        printf("\nNenhum funcionario cadastrado!!!\n");
     else{
         if(VerificaArquivoVazio(dep)==1)
-            printf("\nNenhum departamento cadastrado!!!");
+            printf("\nNenhum departamento cadastrado!!!\n");
         else{
             do{
                 printf("\nForneça a matrícula do funcionario: ");
@@ -414,7 +414,7 @@ void AlterarDepartamento(FILE*fun,FILE*hfun,FILE*dep){
                 matexiste=PesquisaMatricula(fun,matricula);
 
                 if(matexiste==-1)
-                    printf("\nFuncionario inexistente!!!");
+                    printf("\nFuncionario inexistente!!!\n");
                 else{
                     printf("\nForneça o novo departamento: ");
                     setbuf(stdin,NULL);
@@ -425,7 +425,7 @@ void AlterarDepartamento(FILE*fun,FILE*hfun,FILE*dep){
                     dexiste=PesquisaDepartamentoNome(dep,novoDepartamento);
 
                     if(dexiste==0)
-                        printf("\nDepartamento inexistente!!!");
+                        printf("\nDepartamento inexistente!!!\n");
                     else{
 
                         //posicao=PesquisaDepartamentoID(dep,dexiste);
@@ -470,7 +470,7 @@ void AlterarDepartamento(FILE*fun,FILE*hfun,FILE*dep){
 /*Altera os dados de um funcionário  com determinada matrícula e também faz um registro dos dados no historico do funcionario e o
 salario no historico de salario*/
 void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
-    char matricula[10],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[40],UF[4],dataAt[11],nomeFuncionario[60],rua[40],email[40],CEP[9],cidade[40],complemento[30], bairro[30];
+    char matricula[10],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[40],UF[4],dataAt[11],nomeFuncionario[60],rua[40],email[40],CEP[10],cidade[40],complemento[30], bairro[30];
     int cpfexiste,sair,posicao,testeData,dia,mes,ano;;
     long idexiste;
 
@@ -482,10 +482,10 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
 
     do{
         if(VerificaArquivoVazio(fun)==1)
-            printf("\nNenhum funcionario cadastrado!!!");
+            printf("\nNenhum funcionario cadastrado!!!\n");
         else{
 
-            printf("\nForneça a matrícula:");
+            printf("\nForneça a matrícula: ");
             setbuf(stdin,NULL);
             fgets(matricula,10,stdin);
             setbuf(stdin,NULL);
@@ -495,7 +495,7 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
             posicao=PesquisaMatricula(fun,matricula);
 
             if(posicao==-1)
-                printf("\nFuncionário nao encontrado!!!");
+                printf("\nFuncionário nao encontrado!!!\n");
             else{
 
                 fseek(fun,posicao*sizeof(f),SEEK_SET);
@@ -525,7 +525,7 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                     testeData=verficaData(dataNascimento);
 
                     if(testeData==0)
-                        printf("\nData inválida!!!");
+                        printf("\nData inválida!!!\n");
                 }while(testeData==0);
 
                 strcpy(f.dataNascimento,dataNascimento1);
@@ -541,7 +541,7 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                     cpfexiste=VerificaCpf(fun,cpf);
                     printf("\n%d\n",cpfexiste);
                     if(cpfexiste==0)
-                        printf("\nCpf inválido!!!");
+                        printf("\nCpf inválido!!!\n");
 
                 }while(cpfexiste==0);
 
@@ -619,7 +619,7 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
 
                         printf("\nForneça o CEP do funcionario: ");
                         setbuf(stdin,NULL);
-                        fgets(CEP,9,stdin);
+                        fgets(CEP,10,stdin);
                         setbuf(stdin,NULL);
 
 
@@ -695,7 +695,7 @@ void RelatorioGerenteDeDepartamento(FILE *dep,FILE *fun){
             dexiste=PesquisaDepartamentoNome(dep,nome);
             printf("%li",dexiste);
             if(dexiste==0)
-                printf("\nDepartamento não encontrado!!!");
+                printf("\nDepartamento não encontrado!!!\n");
             else{
                 posicaodep=PesquisaDepartamentoID(dep,dexiste);
 
@@ -703,7 +703,7 @@ void RelatorioGerenteDeDepartamento(FILE *dep,FILE *fun){
                 fread(&d,sizeof(d),1,dep);
                 printf("%li",d.id_gerente);
                 if(d.id_gerente==-1)
-                    printf("\nNenhum funcionário cadastrado como gerente!!!");
+                    printf("\nNenhum funcionário cadastrado como gerente!!!\n");
                 else{
 
                     pos=PesquisaFunID(fun,d.id_gerente);
@@ -739,7 +739,7 @@ void historicoDeSalario(FILE* hsal,FILE*fun){
         RetiraSequenciaDeEscape(matricula);
         matexiste=PesquisaMatricula(fun,matricula);
         if(matexiste==-1)
-            printf("\nMatrícula inexistente!!!");
+            printf("\nMatrícula inexistente!!!\n");
     }while(matexiste==-1);
 
     fseek(fun,matexiste*sizeof(f),SEEK_SET);
