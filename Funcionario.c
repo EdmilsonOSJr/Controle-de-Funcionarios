@@ -5,7 +5,6 @@
 #include<ctype.h>
 #include"Departamento.h"
 #include"Funcionario.h"
-#include"HistoricoDepartamento.h"
 #include"HistoricoFuncionario.h"
 #include"HistoricoSalario.h"
 #include"funcoesPesquisa.h"
@@ -15,10 +14,9 @@
 
 //Cadastra o funcionario e também faz um registro dos dados no historico do funcionario e o salario no hsalario
 void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
-    char matricula[10],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[40],UF[4],data[11],nomeFuncionario[60],rua[40],email[40],CEP[9],cidade[40],complemento[30], bairro[30];
-    int matexiste,cpfexiste,sair,testedata;
-    long idexiste,pid;
-    unsigned short int dia,mes,ano;
+    char matricula[10],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[40],UF[4],dataAt[11],nomeFuncionario[60],rua[40],email[40],CEP[9],cidade[40],complemento[30], bairro[30];
+    int matexiste,cpfexiste,sair,testedata,dia,mes,ano;
+    long idexiste,pid;;
 
     TFuncionario f;
     THistoricoFuncionario hf;
@@ -30,7 +28,6 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
             setbuf(stdin,NULL);
             fgets(matricula,10,stdin);
             setbuf(stdin,NULL);
-            flushIn();
 
             RetiraSequenciaDeEscape(matricula);
 
@@ -47,7 +44,6 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
             setbuf(stdin,NULL);
             fgets(nomeFuncionario,60,stdin);
             setbuf(stdin,NULL);
-            flushIn();
 
             RetiraSequenciaDeEscape(nomeFuncionario);
         }while(strlen(nomeFuncionario) == 0);
@@ -65,7 +61,6 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
             setbuf(stdin,NULL);
             fgets(dataNascimento,12,stdin);
             setbuf(stdin,NULL);
-            flushIn();
 
             RetiraSequenciaDeEscape(dataNascimento);
             strcpy(dataNascimento1,dataNascimento);
@@ -82,7 +77,6 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
             setbuf(stdin,NULL);
             fgets(cpf,12,stdin);
             setbuf(stdin,NULL);
-            flushIn();
 
             RetiraSequenciaDeEscape(cpf);
             cpfexiste=VerificaCpf(fun,cpf);
@@ -99,7 +93,6 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
         setbuf(stdin,NULL);
         fgets(nomed,40,stdin);
         setbuf(stdin,NULL);
-        flushIn();
 
 
         RetiraSequenciaDeEscape(nomed);
@@ -124,7 +117,7 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                 setbuf(stdin,NULL);
                 fgets(rua,40,stdin);
                 setbuf(stdin,NULL);
-                flushIn();
+
 
                 RetiraSequenciaDeEscape(rua);
 
@@ -133,8 +126,7 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                 printf("\nForneça o bairro do funcionario: ");
                 setbuf(stdin,NULL);
                 fgets(bairro,30,stdin);
-                setbuf(stdin,NULL);
-                flushIn();
+
 
                 RetiraSequenciaDeEscape(bairro);
 
@@ -147,7 +139,6 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                 setbuf(stdin,NULL);
                 fgets(complemento,30,stdin);
                 setbuf(stdin,NULL);
-                flushIn();
 
                 RetiraSequenciaDeEscape(complemento);
 
@@ -157,7 +148,7 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                 setbuf(stdin,NULL);
                 fgets(cidade,40,stdin);
                 setbuf(stdin,NULL);
-                flushIn();
+
 
                 RetiraSequenciaDeEscape(cidade);
                 strcpy(f.cidade,cidade);
@@ -166,7 +157,6 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                 setbuf(stdin,NULL);
                 fgets(UF,4,stdin);
                 setbuf(stdin,NULL);
-                flushIn();
 
                 RetiraSequenciaDeEscape(UF);
 
@@ -176,7 +166,6 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                 setbuf(stdin,NULL);
                 fgets(CEP,9,stdin);
                 setbuf(stdin,NULL);
-                flushIn();
 
                 RetiraSequenciaDeEscape(CEP);
                 strcpy(f.CEP,CEP);
@@ -185,23 +174,17 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                 setbuf(stdin,NULL);
                 fgets(email,40,stdin);
                 setbuf(stdin,NULL);
-                flushIn();
 
                 RetiraSequenciaDeEscape(f.email);
                 strcpy(f.email,email);
 
-                printf("\nForneça a data atual (dia/mes/ano): ");
-                setbuf(stdin,NULL);
-                fgets(data,11,stdin);
-                setbuf(stdin,NULL);
-                flushIn();
+                dataAtual(&dia,&mes,&ano);
 
-                RetiraSequenciaDeEscape(data);
+                sprintf(dataAt,"%d/%d/%d",dia,mes,ano);
 
-                strcpy(hf.data,data);
+                RetiraSequenciaDeEscape(dataAt);
 
-                sscanf(data,"%hu/%hu/%hu",&dia,&mes,&ano);
-
+                strcpy(hf.data,dataAt);
 
                 hs.mes=mes;
                 hs.ano=ano;
@@ -349,9 +332,8 @@ void RelatorioFuncionariosPorDepartamento(FILE *fun,FILE *dep){
 
 //Altera Salario dos funcionarios cadasreados e faz registro no histórico de salário
 void AlterarSalario(FILE*fun,FILE*hsal){
-    unsigned short int dia,mes,ano;
-    char matricula[10],data[11];
-    int matexiste,sair;
+    char matricula[10];
+    int matexiste,sair,dia,mes,ano;;
     float novosalario;
 
     TFuncionario f;
@@ -377,15 +359,7 @@ void AlterarSalario(FILE*fun,FILE*hsal){
                 printf("\nForneça o novo salario: ");
                 scanf("%f",&novosalario);
 
-                printf("\nForneça a data da modificação (dia/mes/ano): ");
-                setbuf(stdin,NULL);
-                fgets(data,11,stdin);
-                setbuf(stdin,NULL);
-                flushIn();
-
-                RetiraSequenciaDeEscape(data);
-
-                sscanf(data,"%hu/%hu/%hu",&dia,&mes,&ano);
+                dataAtual(&dia,&mes,&ano);
 
 
                 hs.mes=mes;
@@ -417,8 +391,8 @@ void AlterarSalario(FILE*fun,FILE*hsal){
 //Altera o departamento dos funcionarios cadasreados e também faz um registro dos dados no historico do funcionario
 void AlterarDepartamento(FILE*fun,FILE*hfun,FILE*dep){
 
-    char matricula[10],novoDepartamento[40],data[11];
-    int matexiste,sair;
+    char matricula[10],novoDepartamento[40],dataAt[11];
+    int matexiste,sair,mes,ano,dia;
     long dexiste;
 
     TFuncionario f;
@@ -461,14 +435,16 @@ void AlterarDepartamento(FILE*fun,FILE*hfun,FILE*dep){
                         f.id_departamento=dexiste;
                         hf.id_funcionario=f.id;
 
-                        printf("\nForneça a data da modificação (dia/mes/ano): ");
-                        setbuf(stdin,NULL);
-                        fgets(data,11,stdin);
-                        setbuf(stdin,NULL);
-                        flushIn();
+                        dataAtual(&dia,&mes,&ano);
 
-                        RetiraSequenciaDeEscape(data);
-                        strcpy(hf.data,data);
+                        sprintf(dataAt,"%d/%d/%d",dia,mes,ano);
+
+                        RetiraSequenciaDeEscape(dataAt);
+
+                        strcpy(hf.data,dataAt);
+
+                        RetiraSequenciaDeEscape(dataAt);
+                        strcpy(hf.data,dataAt);
 
                         fseek(fun,matexiste*sizeof(f),SEEK_SET);
                         fwrite(&f,sizeof(f),1,fun);
@@ -494,9 +470,8 @@ void AlterarDepartamento(FILE*fun,FILE*hfun,FILE*dep){
 /*Altera os dados de um funcionário  com determinada matrícula e também faz um registro dos dados no historico do funcionario e o
 salario no historico de salario*/
 void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
-    unsigned short int dia,mes,ano;
-    char matricula[10],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[40],UF[4],data[11],nomeFuncionario[60],rua[40],email[40],CEP[9],cidade[40],complemento[30], bairro[30];
-    int cpfexiste,sair,posicao,testeData;
+    char matricula[10],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[40],UF[4],dataAt[11],nomeFuncionario[60],rua[40],email[40],CEP[9],cidade[40],complemento[30], bairro[30];
+    int cpfexiste,sair,posicao,testeData,dia,mes,ano;;
     long idexiste;
 
 
@@ -514,7 +489,6 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
             setbuf(stdin,NULL);
             fgets(matricula,10,stdin);
             setbuf(stdin,NULL);
-            flushIn();
 
             RetiraSequenciaDeEscape(matricula);
 
@@ -532,7 +506,6 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                     setbuf(stdin,NULL);
                     fgets(nomeFuncionario,60,stdin);
                     setbuf(stdin,NULL);
-                    flushIn();
 
                     RetiraSequenciaDeEscape(nomeFuncionario);
                 }while(strlen(nomeFuncionario) == 0);
@@ -546,7 +519,6 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                     setbuf(stdin,NULL);
                     fgets(dataNascimento,12,stdin);
                     setbuf(stdin,NULL);
-                    flushIn();
 
                     RetiraSequenciaDeEscape(dataNascimento);
                     strcpy(dataNascimento1,dataNascimento);
@@ -563,7 +535,6 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                     setbuf(stdin,NULL);
                     fgets(cpf,13,stdin);
                     setbuf(stdin,NULL);
-                    flushIn();
                     //printf("\n%d\n",strlen(cpf));
                     RetiraSequenciaDeEscape(cpf);
                     //printf("\n%d\n",strlen(cpf));
@@ -580,7 +551,6 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                 setbuf(stdin,NULL);
                 fgets(nomed,40,stdin);
                 setbuf(stdin,NULL);
-                flushIn();
 
 
                 RetiraSequenciaDeEscape(nomed);
@@ -606,7 +576,6 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                         setbuf(stdin,NULL);
                         fgets(rua,40,stdin);
                         setbuf(stdin,NULL);
-                        flushIn();
 
                         RetiraSequenciaDeEscape(rua);
                         strcpy(f.rua,rua);
@@ -616,7 +585,6 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                         setbuf(stdin,NULL);
                         fgets(bairro,30,stdin);
                         setbuf(stdin,NULL);
-                        flushIn();
 
                         RetiraSequenciaDeEscape(bairro);
                         strcpy(f.bairro,bairro);
@@ -628,7 +596,6 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                         setbuf(stdin,NULL);
                         fgets(complemento,30,stdin);
                         setbuf(stdin,NULL);
-                        flushIn();
 
                         RetiraSequenciaDeEscape(complemento);
                         strcpy(f.complemento,complemento);
@@ -637,7 +604,6 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                         setbuf(stdin,NULL);
                         fgets(cidade,40,stdin);
                         setbuf(stdin,NULL);
-                        flushIn();
 
                         RetiraSequenciaDeEscape(cidade);
                         strcpy(f.cidade,cidade);
@@ -646,7 +612,6 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                         setbuf(stdin,NULL);
                         fgets(UF,4,stdin);
                         setbuf(stdin,NULL);
-                        flushIn();
 
                         RetiraSequenciaDeEscape(UF);
 
@@ -656,7 +621,7 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                         setbuf(stdin,NULL);
                         fgets(CEP,9,stdin);
                         setbuf(stdin,NULL);
-                        flushIn();
+
 
                         RetiraSequenciaDeEscape(CEP);
                         strcpy(f.CEP,CEP);
@@ -665,21 +630,19 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                         setbuf(stdin,NULL);
                         fgets(email,40,stdin);
                         setbuf(stdin,NULL);
-                        flushIn();
+
 
                         RetiraSequenciaDeEscape(email);
                         strcpy(f.email,email);
 
-                        printf("\nForneça a data da modificação (dia/mes/ano): ");
-                        setbuf(stdin,NULL);
-                        fgets(data,11,stdin);
-                        setbuf(stdin,NULL);
-                        flushIn();
+                        dataAtual(&dia,&mes,&ano);
 
-                        RetiraSequenciaDeEscape(data);
-                        strcpy(hf.data,data);
+                        sprintf(dataAt,"%d/%d/%d",dia,mes,ano);
 
-                        sscanf(data,"%hu/%hu/%hu",&dia,&mes,&ano);
+                        RetiraSequenciaDeEscape(dataAt);
+
+                        strcpy(hf.data,dataAt);
+
                         hs.mes=mes;
                         hs.ano=ano;
 
@@ -771,7 +734,7 @@ void historicoDeSalario(FILE* hsal,FILE*fun){
         setbuf(stdin,NULL);
         fgets(matricula,10,stdin);
         setbuf(stdin,NULL);
-        flushIn();
+
 
         RetiraSequenciaDeEscape(matricula);
         matexiste=PesquisaMatricula(fun,matricula);

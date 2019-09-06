@@ -23,12 +23,11 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
 
         printf("\n");
         printf("\nEscolha uma opção: \n");
-        printf("\n1-Cadastrar    \n2-Consultar    \n3-Alterar      \n4-relatorio      \n5-Sair\n");
+        printf("\n[1] Cadastrar    \n[2] Consultar    \n[3] Alterar      \n[4] relatorio      \n[5] Sair\n");
         printf("\n=> ");
         setbuf(stdin,NULL);
         fgets(opcao,3,stdin);
         setbuf(stdin,NULL);
-        flushIn();
 
         if(isdigit(opcao[0])==0)
             printf("\nComando incorreto!!!!\n");
@@ -45,12 +44,11 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
 
                     printf("\n");
                     printf("\nEscolha uma opção: \n");
-                    printf("\n1-Cadastrar funcionário     \n2-Cadastrar departamento      \n3-Sair\n");
+                    printf("\n[1] Cadastrar funcionário     \n[2] Cadastrar departamento      \n[3] Sair\n");
                     printf("\n=> ");
                     setbuf(stdin,NULL);
                     fgets(opcao1,3,stdin);
                     setbuf(stdin,NULL);
-                    flushIn();
 
                     if(isdigit(opcao1[0])==0)
                         printf("\nComando incorreto!!!!\n");
@@ -86,12 +84,11 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
 
                     printf("\n");
                     printf("\nEscolha uma opção: \n");
-                    printf("\n1-Consultar funcionário     \n2-Consultar departamento      \n3-Sair\n");
+                    printf("\n[1] Consultar funcionário     \n[2] Consultar departamento      \n[3] Sair\n");
                     printf("\n=> ");
                     setbuf(stdin,NULL);
                     fgets(opcao2,3,stdin);
                     setbuf(stdin,NULL);
-                    flushIn();
 
                     if(isdigit(opcao2[0])==0)
                         printf("\nComando incorreto!!!!\n");
@@ -138,13 +135,12 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
 
                     printf("\n");
                     printf("\nEscolha uma opção: \n");
-                    printf("\n1-Alterar funcionário     \n2-Alterar departamento do funcionário      \n3-Alterar gerente do funcionário");
-                    printf("\n4-Alterar salário de um funcionário      \n5-Sair\n");
+                    printf("\n[1] Alterar funcionário     \n[2] Alterar departamento do funcionário      \n[3] Alterar gerente do funcionário");
+                    printf("\n[4] Alterar salário de um funcionário      \n[5] Sair\n");
                     printf("\n=> ");
                     setbuf(stdin,NULL);
                     fgets(opcao3,3,stdin);
                     setbuf(stdin,NULL);
-                    flushIn();
 
                     if(isdigit(opcao3[0])==0)
                         printf("\nComando incorreto!!!!\n");
@@ -187,13 +183,13 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
 
                     printf("\n");
                     printf("\nEscolha uma opção: \n");
-                    printf("\n1-Folhs de pagamento     \n2-Relató de funcionário por departamento      \n3-Histórico de salário");
-                    printf("\n4-Gerentes de um departamento      \n5-Sair\n");
+                    printf("\n[1] Folhs de pagamento     \n[2] Relató de funcionário por departamento      \n[3] Histórico de salário");
+                    printf("\n[4] Gerentes de um departamento      \n[5] Sair\n");
                     printf("\n=> ");
                     setbuf(stdin,NULL);
                     fgets(opcao4,3,stdin);
                     setbuf(stdin,NULL);
-                    flushIn();
+
 
                     if(isdigit(opcao4[0])==0)
                         printf("\nComando incorreto!!!!\n");

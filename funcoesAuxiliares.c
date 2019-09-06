@@ -12,13 +12,6 @@
 #include "funcoesPesquisa.h"
 #include "funcoesVerificacao.h"
 
-void flushIn(){
-    char ch;
-    do{
-        ch = fgetc(stdin);
-    }while (ch != EOF && ch != '\n');
-}
-
 
 //Nessa funçaõ o \n do vetor de char é trocado pelo \0
 void RetiraSequenciaDeEscape(char *palavra){
@@ -44,7 +37,6 @@ int sairDoLoop(){
         fgets(sair,3,stdin);
         setbuf(stdin,NULL);
 
-        flushIn();
         RetiraSequenciaDeEscape(sair);
         sairInteiro=atoi(sair);
 
@@ -117,3 +109,16 @@ void apresentaDadosDoFuncionario(FILE* fun, FILE *dep, int posicao){
     printf("\nCEP: %s",f.CEP);
 }//fim apresentaDadosDoFuncionario()
 
+void dataAtual(int *d,int *m,int *a){
+    struct tm *local;
+        time_t t;
+
+        t = time(&t);
+        local = localtime(&t);
+
+        ///Obtem a hora do sistema.
+        *m = local->tm_mon + 1;
+        *a = local->tm_year + 1900;
+        *d = local->tm_mday;
+
+}

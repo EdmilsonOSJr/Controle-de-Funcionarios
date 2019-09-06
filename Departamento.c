@@ -1,8 +1,9 @@
 #include <stdio.h>
-#include<stdlib.h>
+#include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
 #include <locale.h>
+#include <time.h>
 #include"Departamento.h"
 #include"Funcionario.h"
 #include"HistoricoDepartamento.h"
@@ -108,8 +109,8 @@ void imprimir(FILE*dep){
 //cadastra os dados no arquivo departamento.dat
 void CadastraDepartamento(FILE*dep,FILE*hdep){
 
-    int sair;
-    char ramal[50],nomeDepartamento[40],data[11];
+    int sair,m,a,dia;
+    char ramal[50],nomeDepartamento[40],dataAt[12];
     unsigned short int ramalnumero;
     long nomeExiste;
 
@@ -122,7 +123,6 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
             setbuf(stdin,NULL);
             fgets(nomeDepartamento,40,stdin);
             setbuf(stdin,NULL);
-            flushIn();
 
             RetiraSequenciaDeEscape(nomeDepartamento);
 
@@ -140,7 +140,6 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
         setbuf(stdin,NULL);
         fgets(d.sigla,10,stdin);
         setbuf(stdin,NULL);
-        flushIn();
 
         RetiraSequenciaDeEscape(d.sigla);
 
@@ -151,7 +150,6 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
             fgets(ramal,50,stdin);
             setbuf(stdin,NULL);
 
-            flushIn();
             RetiraSequenciaDeEscape(ramal);
             ramalnumero=atoi(ramal);
 
@@ -165,17 +163,17 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
         d.id_gerente=-1;
 
 
-        printf("\nForneça a data atual (dia/mes/ano): ");
-        setbuf(stdin,NULL);
-        fgets(data,11,stdin);
-        setbuf(stdin,NULL);
+        dataAtual(&dia,&m,&a);
 
-        RetiraSequenciaDeEscape(data);
+        sprintf(dataAt,"%d/%d/%d",dia,m,a);
 
-        strcpy(hd.data,data);
+        RetiraSequenciaDeEscape(dataAt);
+
+        strcpy(hd.data,dataAt);
 
         fseek(dep,0,SEEK_END);
         fwrite(&d,sizeof(d),1,dep);
+
 
         hd.id_departamento=d.id;
         hd.id_gerente=d.id_gerente;
@@ -196,9 +194,9 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
 //Altera o gerente no arquivo departamento.dat e no historicodepartamento.dat, isso se o novo id n for um id existente
 void AlterarGerente(FILE*dep,FILE*fun,FILE*hdep){
 
-    int posicao,posicaoNovoGerente,sair;
+    int posicao,posicaoNovoGerente,sair,dia,mes,ano;
     long idDepartamento;
-    char nomeDepartamento[40],matriculaDoNovoGerente[10],data[11];
+    char nomeDepartamento[40],matriculaDoNovoGerente[10],dataAt[12];
 
     TDepartamento d;
     TFuncionario f;
@@ -250,16 +248,13 @@ void AlterarGerente(FILE*dep,FILE*fun,FILE*hdep){
                         fread(&f,sizeof(f),1,fun);
 
 
+                        dataAtual(&dia,&mes,&ano);
 
-                        printf("\nForneça a data da modificação (dia/mes/ano): ");
-                        setbuf(stdin,NULL);
-                        fgets(data,11,stdin);
-                        setbuf(stdin,NULL);
-                        flushIn();
+                        sprintf(dataAt,"%d/%d/%d",dia,mes,ano);
 
-                        RetiraSequenciaDeEscape(data);
-                        strcpy(hd.data,data);
+                        RetiraSequenciaDeEscape(dataAt);
 
+                        strcpy(hd.data,dataAt);
 
                         d.id_gerente=f.id;
                         hd.id_gerente=f.id;

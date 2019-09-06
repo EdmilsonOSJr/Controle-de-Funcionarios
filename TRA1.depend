@@ -327,3 +327,104 @@
 
 1567285566 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesAuxiliares.h
 
+1567778463 source:/home/aluno/Downloads/TrabalhoAtualizado-master/Departamento.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<locale.h>
+	<time.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacao.h"
+	"funcoesAuxiliares.h"
+
+1567298787 /home/aluno/Downloads/TrabalhoAtualizado-master/Departamento.h
+
+1567298787 /home/aluno/Downloads/TrabalhoAtualizado-master/Funcionario.h
+
+1567298787 /home/aluno/Downloads/TrabalhoAtualizado-master/HistoricoDepartamento.h
+
+1567298787 /home/aluno/Downloads/TrabalhoAtualizado-master/HistoricoFuncionario.h
+
+1567298787 /home/aluno/Downloads/TrabalhoAtualizado-master/HistoricoSalario.h
+
+1567298787 /home/aluno/Downloads/TrabalhoAtualizado-master/funcoesPesquisa.h
+
+1567298787 /home/aluno/Downloads/TrabalhoAtualizado-master/funcoesVerificacao.h
+
+1567777908 /home/aluno/Downloads/TrabalhoAtualizado-master/funcoesAuxiliares.h
+
+1567779197 source:/home/aluno/Downloads/TrabalhoAtualizado-master/Funcionario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacao.h"
+	"funcoesAuxiliares.h"
+
+1567777935 source:/home/aluno/Downloads/TrabalhoAtualizado-master/funcoesAuxiliares.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	<time.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacao.h"
+
+1567298787 source:/home/aluno/Downloads/TrabalhoAtualizado-master/funcoesPesquisa.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacao.h"
+
+1567298787 source:/home/aluno/Downloads/TrabalhoAtualizado-master/funcoesVerificacao.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacao.h"
+
+1567774556 source:/home/aluno/Downloads/TrabalhoAtualizado-master/main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<ctype.h>
+	"Departamento.h"
+	"Funcionario.h"
+	"HistoricoDepartamento.h"
+	"HistoricoFuncionario.h"
+	"HistoricoSalario.h"
+	"funcoesAuxiliares.h"
+
