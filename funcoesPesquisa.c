@@ -8,7 +8,7 @@
 
 
 
-//Retorna a posição da matricula caso exista, senão retorna -1
+///Retorna a posição da matricula caso exista, senão retorna -1
 int PesquisaMatricula(FILE *fun,char *matricula){
     int pos=0;
     TFuncionario f;
@@ -25,7 +25,7 @@ int PesquisaMatricula(FILE *fun,char *matricula){
     return -1;
 }//fim PesquisaMatricula()
 
-//Recebe o ponteiro do arquivo e o nome do departamento, retornando seu id caso exista e 0 caso contraário
+///Recebe o ponteiro do arquivo e o nome do departamento, retornando seu id caso exista e 0 caso contrário
 long PesquisaDepartamentoNome(FILE*dep,char *depar){
 
     TDepartamento d;
@@ -38,7 +38,7 @@ long PesquisaDepartamentoNome(FILE*dep,char *depar){
     return 0;
 }//fim PesquisaDepartamentoNome()
 
-/*realiza uma pesquisa no arquivo departamento.dat, caso encontre retorna a posição e se não encontar retorna -1 */
+///realiza uma pesquisa no arquivo departamento.dat, caso encontre retorna a posição e se não encontar retorna -1
 int PesquisaDepartamentoID(FILE *dep,long id){
     int pos=0;
     TDepartamento d;
@@ -55,7 +55,7 @@ int PesquisaDepartamentoID(FILE *dep,long id){
     return -1;
 }//fim pesquisaDepartamentoID()
 
-/*realiza uma pesquisa no arquivo funcionario.dat, caso encontre retorna a posição e se não encontar retorna -1 */
+///realiza uma pesquisa no arquivo funcionario.dat, caso encontre retorna a posição e se não encontar retorna -1
 int PesquisaFunID(FILE *fun,long id){
     int pos=0;
     TFuncionario f;

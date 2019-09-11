@@ -2,14 +2,85 @@
 <CodeBlocks_layout_file>
 	<FileVersion major="1" minor="0" />
 	<ActiveTarget name="Debug" />
-	<File name="funcoesVerificacoes.h" open="1" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="historicoDepartamento.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="233" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="historicoFuncionario.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="0" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="historicoSalario.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="221" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="funcoesVerificacoes.h" open="0" top="0" tabpos="9" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="228" topLine="0" />
 		</Cursor>
 	</File>
-	<File name="funcoesPesquisa.c" open="1" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="funcoesAuxiliares.h" open="0" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="146" topLine="0" />
+			<Cursor1 position="287" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="funcoesAuxiliares.c" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="260" topLine="11" />
+		</Cursor>
+		<Folding>
+			<Collapse line="11" />
+			<Collapse line="19" />
+			<Collapse line="49" />
+			<Collapse line="61" />
+			<Collapse line="74" />
+			<Collapse line="110" />
+			<Collapse line="125" />
+		</Folding>
+	</File>
+	<File name="funcoesVerificacao.c" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="2450" topLine="0" />
+		</Cursor>
+		<Folding>
+			<Collapse line="9" />
+			<Collapse line="19" />
+			<Collapse line="71" />
+			<Collapse line="113" />
+		</Folding>
+	</File>
+	<File name="funcionario.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="26336" topLine="12" />
+		</Cursor>
+		<Folding>
+			<Collapse line="16" />
+			<Collapse line="216" />
+			<Collapse line="244" />
+			<Collapse line="287" />
+			<Collapse line="334" />
+			<Collapse line="398" />
+			<Collapse line="484" />
+			<Collapse line="692" />
+			<Collapse line="750" />
+		</Folding>
+	</File>
+	<File name="departamento.c" open="1" top="1" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="97" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="funcionario.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="30" topLine="0" />
+		</Cursor>
+	</File>
+	<File name="funcoesPesquisa.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+		<Cursor>
+			<Cursor1 position="598" topLine="0" />
 		</Cursor>
 		<Folding>
 			<Collapse line="11" />
@@ -18,76 +89,19 @@
 			<Collapse line="58" />
 		</Folding>
 	</File>
-	<File name="historicoDepartamento.h" open="0" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
+	<File name="main.c" open="1" top="0" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
 		<Cursor>
-			<Cursor1 position="233" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="funcoesAuxiliares.c" open="1" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="195" topLine="110" />
-		</Cursor>
-	</File>
-	<File name="funcionario.c" open="1" top="0" tabpos="3" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="297" topLine="567" />
+			<Cursor1 position="192" topLine="0" />
 		</Cursor>
 		<Folding>
-			<Collapse line="15" />
-		</Folding>
-	</File>
-	<File name="main.c" open="1" top="1" tabpos="2" split="0" active="1" splitpos="0" zoom_1="1" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="2809" topLine="0" />
-		</Cursor>
-		<Folding>
+			<Collapse line="10" />
 			<Collapse line="248" />
 			<Collapse line="283" />
 		</Folding>
-	</File>
-	<File name="departamento.c" open="1" top="0" tabpos="1" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="97" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="83" />
-			<Collapse line="111" />
-			<Collapse line="201" />
-		</Folding>
-	</File>
-	<File name="funcionario.h" open="0" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="30" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="historicoSalario.h" open="0" top="0" tabpos="7" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="221" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="historicoFuncionario.h" open="1" top="0" tabpos="6" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="0" topLine="0" />
-		</Cursor>
-	</File>
-	<File name="funcoesAuxiliares.h" open="1" top="0" tabpos="5" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="444" topLine="0" />
-		</Cursor>
 	</File>
 	<File name="funcoesPesquisa.h" open="0" top="0" tabpos="4" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
 		<Cursor>
 			<Cursor1 position="264" topLine="0" />
 		</Cursor>
-	</File>
-	<File name="funcoesVerificacao.c" open="1" top="0" tabpos="8" split="0" active="1" splitpos="0" zoom_1="0" zoom_2="0">
-		<Cursor>
-			<Cursor1 position="313" topLine="0" />
-		</Cursor>
-		<Folding>
-			<Collapse line="18" />
-			<Collapse line="70" />
-			<Collapse line="112" />
-		</Folding>
 	</File>
 </CodeBlocks_layout_file>

@@ -14,7 +14,7 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
 
     do{
 
-        system("clear");//printf("\e[H\e[2J");
+        system("clear || cls");//printf("\e[H\e[2J");
         for(i=0;i<2;i++)
             printf("\n=======================================================");
         printf("\n====================== Opções =========================");
@@ -37,7 +37,7 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
             switch (atoi(opcao)){
             case 1:
                 do{
-                    system("clear");
+                    system("clear || cls");
                     for(i=0;i<2;i++)
                         printf("\n=======================================================");
                     printf("\n====================== cadastro =======================");
@@ -80,7 +80,7 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
 
             case 2:
                 do{
-                    //system("clear");
+                    //system("clear || cls");
                     for(i=0;i<2;i++)
                         printf("\n=======================================================");
                     printf("\n====================== Consulta =======================");
@@ -134,7 +134,7 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
 
             case 3:
                 do{
-                    system("clear");
+                    system("clear || cls");
                     for(i=0;i<2;i++)
                         printf("\n=======================================================");
                     printf("\n====================== Alterar ========================");
@@ -185,7 +185,7 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
 
             case 4:
                 do{
-                    system("clear");
+                    system("clear || cls");
                     for(i=0;i<2;i++)
                         printf("\n=======================================================");
                     printf("\n====================== Relatório ======================");
@@ -221,7 +221,7 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
                         break;
 
                         case 4:
-                        RelatorioGerenteDeDepartamento(departamento,funcionario);
+                        RelatorioGerenteDeDepartamento(departamento,funcionario,hdepartamento);
                         break;
 
                         case 5:

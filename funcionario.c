@@ -6,13 +6,14 @@
 #include"departamento.h"
 #include"funcionario.h"
 #include"historicoFuncionario.h"
+#include"historicoDepartamento.h"
 #include"historicoSalario.h"
 #include"funcoesPesquisa.h"
 #include"funcoesVerificacoes.h"
 #include "funcoesAuxiliares.h"
 
 
-//Cadastra o funcionario e também faz um registro dos dados no historico do funcionario e o salario no hsalario
+///Cadastra o funcionario e também faz um registro dos dados no historico do funcionario e o salario no hsalario
 void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
     char matricula[11],dataNascimento[12],dataNascimento1[12],cpf[13],nomed[41],UF[4],dataAt[11],nomeFuncionario[61],rua[41],email[41],CEP[10],cidade[41],complemento[31], bairro[31];
     int matexiste,cpfexiste,sair,testedata,dia,mes,ano;
@@ -23,12 +24,12 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
     THistoricoSalario hs;
 
     do{
-        system("clear");
+        system("clear || cls");
         printf("\n================================\n");
         printf("\nFORNEÇA OS DADOS DO FUNCIONÁRIO\n");
         printf("\n================================\n");
         do{
-            printf("\nForneça a matrícula: ");
+            printf("\nForneça a matrícula: "); ///Apenas sai do loop se fornecer uma matrícula não repetida
             setbuf(stdin,NULL);
             fgets(matricula,11,stdin);
             setbuf(stdin,NULL);
@@ -43,7 +44,7 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
         strcpy(f.matricula,matricula);
 
         do{
-            printf("\nForneça o nome do funcionário: ");
+            printf("\nForneça o nome do funcionário: "); ///Apenas sai se digitar algo
             setbuf(stdin,NULL);
             fgets(nomeFuncionario,61,stdin);
             setbuf(stdin,NULL);
@@ -60,7 +61,7 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
         hs.id_funcionario=pid;
 
         do{
-            printf("\nForneça a data de nascimento do funcionário: ");
+            printf("\nForneça a data de nascimento do funcionário: "); ///Apenas sai do loop se fornecer uma data válida
             setbuf(stdin,NULL);
             fgets(dataNascimento,12,stdin);
             setbuf(stdin,NULL);
@@ -76,13 +77,12 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
         strcpy(f.dataNascimento,dataNascimento1);
 
         do{
-            printf("\nForneça o cpf: ");
+            printf("\nForneça o cpf: "); ///Apenas sai do loop se fornecer um cpf válido
             setbuf(stdin,NULL);
             fgets(cpf,13,stdin);
             setbuf(stdin,NULL);
 
             RetiraSequenciaDeEscape(cpf);
-//            printf("%d",strlen(cpf));
             cpfexiste=VerificaCpf(fun,cpf);
 
             if(cpfexiste==0)
@@ -202,7 +202,7 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                 fseek(hsal,0,SEEK_END);
                 fwrite(&hs,sizeof(hs),1,hsal);
 
-                fflush(fun);
+                fflush(fun); ///Obriga a gravar os dados sem ter que fechar o arquivo
                 fflush(hsal);
                 fflush(hfun);
             }
@@ -213,7 +213,7 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
     }while(sair!=1);
 }//fim CadastrarFuncionario()
 
-//Consulta um funcionario , caso exista seus dados são printados na tela, caso contrário retorna uma mensagem de funcionario inexistente
+///Consulta um funcionario , caso exista seus dados são printados na tela, caso contrário retorna uma mensagem de funcionario inexistente
 void ConsultaFuncionarioporMatricula(FILE*fun,FILE*dep){
     int posicao;
     char matricula[10];
@@ -241,7 +241,7 @@ void ConsultaFuncionarioporMatricula(FILE*fun,FILE*dep){
     pause();
 }//fim ConsultaFuncionarioporMatricula()
 
-//Mostra a matrícula, o nome e o salário de um funcionário
+///Mostra a matrícula, o nome e o salário de um funcionário
 void FolhaDePagamento(FILE*fun){
 
     int posicao;
@@ -284,9 +284,10 @@ void FolhaDePagamento(FILE*fun){
     pause();
 }//fim FolhaDePagamento()
 
-//Imprime os dados dos funcionários de um determinado departamento
+///Imprime os dados dos funcionários de um determinado departamento
 void RelatorioFuncionariosPorDepartamento(FILE *fun,FILE *dep){
     int cont;
+    float totalSalario=0;
 
     TFuncionario f;
     TDepartamento d;
@@ -302,7 +303,7 @@ void RelatorioFuncionariosPorDepartamento(FILE *fun,FILE *dep){
         printf("\n================================\n");
 
         rewind(dep);
-        while(fread(&d,sizeof(d),1,dep)){
+        while(fread(&d,sizeof(d),1,dep)){ /// percorre o arquivo Departamento.dat
             printf("\n");
             printf("\n");
             printf("\nCódigo do Departamento: %li",d.id);
@@ -310,24 +311,27 @@ void RelatorioFuncionariosPorDepartamento(FILE *fun,FILE *dep){
             printf("\n");
             cont=0;
             rewind(fun);
-            while(fread(&f,sizeof(f),1,fun)){
-                if(d.id==f.id_departamento){
-                    printf("\nMatrícula\t\t\tNome\t\t\tSalário\n");
+            while(fread(&f,sizeof(f),1,fun)){ /// percorre o arquivo Funcionário.dat
+                if(d.id==f.id_departamento){                          /// Apenas mostra os dados se o id for igual ao id
+                    printf("\nMatrícula\t\t\tNome\t\t\tSalário\n");   /// do departamento atual do loop externo
                     printf("%s\t\t\t\t",f.matricula);
                     printf("%s ",f.nome);
                     printf("%.2f",f.salario);
+                    totalSalario+=f.salario;
                     cont++;
                 }
             }
             printf("\n");
-            printf("\nTotal da folha de Departamento: %d",cont);
+            printf("\nTotal de funcionários: %d",cont);
+            printf("\nTotal da folha de Departamento: %.2f",totalSalario);
             printf("\n============================================\n");
+            totalSalario=0;
         }
     }
     pause();
 }//fim RelatorioFuncionariosPorDepartamento()
 
-//Altera Salario dos funcionarios cadasreados e faz registro no histórico de salário
+///Altera Salario dos funcionarios cadasreados e faz registro no histórico de salário
 void AlterarSalario(FILE*fun,FILE*hsal){
     char matricula[11];
     int matexiste,sair,dia,mes,ano;;
@@ -391,7 +395,7 @@ void AlterarSalario(FILE*fun,FILE*hsal){
     }
 }//fim AlterarSalario()
 
-//Altera o departamento dos funcionarios cadasreados e também faz um registro dos dados no historico do funcionario
+///Altera o departamento dos funcionarios cadasreados e também faz um registro dos dados no historico do funcionario
 void AlterarDepartamento(FILE*fun,FILE*hfun,FILE*dep){
 
     char matricula[11],novoDepartamento[41],dataAt[11];
@@ -685,50 +689,65 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
     }while(sair!=1);
 }//fim AlterarFuncionario()
 
-//Imprime os dados do gerente de um determinado departamento
-void RelatorioGerenteDeDepartamento(FILE *dep,FILE *fun){
-    char nome[41];
-    long dexiste;
-    int pos,posicaodep;
+///Imprime os dados dos gerentes de um determinado departamento
+void RelatorioGerenteDeDepartamento(FILE *dep,FILE *fun,FILE *hdep){
+    int cont=0;
 
     TDepartamento d;
-//    TFuncionario f;
+    THistoricoDepartamento hd;
+    TFuncionario f;
 
     if(VerificaArquivoVazio(dep)==1)
-        printf("\nNenhum departamento cadastrado!!!");
+            printf("\nNenhum departamento cadastrado!!!\n");
     else{
-        printf("\nForneça o nome do departamento: ");
-        setbuf(stdin,NULL);
-        fgets(nome,41,stdin);
-        setbuf(stdin,NULL);
-
-        RetiraSequenciaDeEscape(nome);
-
-        dexiste=PesquisaDepartamentoNome(dep,nome);
-        printf("%li",dexiste);
-        if(dexiste==0)
-            printf("\nDepartamento não encontrado!!!\n");
+        if(VerificaArquivoVazio(fun)==1)
+            printf("\nNenhum funcionario cadastrado!!!\n");
         else{
-            posicaodep=PesquisaDepartamentoID(dep,dexiste);
+            rewind(hdep);
+            while(fread(&hd,sizeof(hd),1,hdep)){
+                if(hd.id_gerente!=-1){
+                    printf("\n");
+                    printf("\n=======================");
+                    printf("\nDepartamento: %li",hd.id_departamento);
+                    printf("\nid gerente: %li",hd.id_gerente);
+                    printf("\n=======================");
+                }
+                rewind(fun);
+                while(fread(&f,sizeof(f),1,fun)){
+                    if(f.id==hd.id_gerente){
+                        printf("\nId: %li",f.id);
+                        printf("\nMatricula: %s",f.matricula);
+                        printf("\nNome: %s",f.nome);
+                        printf("\nData de nascimento: %s",f.dataNascimento );
+                        printf("\nCPF: %s",f.CPF);
+                        printf("\nId do departamento: %li",f.id_departamento);
+                        printf("\nSalario: %.2f",f.salario);
+                        printf("\nRua: %s",f.rua);
+                        // printf("\nNome departamento : %c",PesquisaDepartamentoID(dep,f.id_departamento));
+                        fseek(dep,PesquisaDepartamentoID(dep,f.id_departamento)*sizeof(d),SEEK_SET);
+                        fread(&d,sizeof(d),1,dep);
 
-            fseek(dep,posicaodep*sizeof(d),SEEK_SET);
-            fread(&d,sizeof(d),1,dep);
-            printf("%li",d.id_gerente);
-            if(d.id_gerente==-1)
-                printf("\nNenhum funcionário cadastrado como gerente!!!\n");
-            else{
-                pos=PesquisaFunID(fun,d.id_gerente);
-                apresentaDadosDoFuncionario(fun,dep,pos);
+                        printf("\nDepartamento: %s",d.nome);
+                        printf("\nCidade: %s",f.cidade);
+                        printf("\nEmail: %s",f.email);
+                        printf("\nBairro: %s",f.bairro);
+                        printf("\nComplemento: %s",f.complemento);
+                        printf("\nNumero: %u",f.Numero);
+                        printf("\nUF: %s",f.UF);
+                        printf("\nCEP: %s",f.CEP);
+
+                    }
+
+                    cont ++;
+                }
             }
-
-
         }
 
     }
     pause();
-
 }//fim RelatorioGerenteDeDepartamento()
 
+///Fornece os salarios de um determinado funcionário em um intervalo de tempo
 void historicoDeSalario(FILE* hsal,FILE*fun){
     char matricula[10];
     long matexiste;
@@ -765,10 +784,10 @@ void historicoDeSalario(FILE* hsal,FILE*fun){
     printf("\nHISTÓRICO DO SALÁRIO\n");
     printf("\n================================\n");
     rewind(hsal);
-    while(fread(&hs,sizeof(hs),1,hsal)){
+    while(fread(&hs,sizeof(hs),1,hsal)){ ///percorre o arquivo de HistoricoSalario.dat
         if(f.id==hs.id_funcionario){
-            if((hs.ano>=anoInicial) && (hs.ano<=anoFinal))
-                if((hs.mes>=mesInicial) && (hs.mes<=mesFinal)){
+            if((hs.ano>=anoInicial) && (hs.ano<=anoFinal)) /// verifica se a dados  entre os anos fornecidos
+                if((hs.mes>=mesInicial) && (hs.mes<=mesFinal)){ /// verifica se a dados  entre os meses fornecidos
                     printf("\n===================================");
                     printf("\nMes %u : %.2f",hs.mes,hs.salario);
                     printf("\nAno %u : %.2f",hs.ano,hs.salario);
@@ -781,4 +800,4 @@ void historicoDeSalario(FILE* hsal,FILE*fun){
         printf("\nFuncionário sem histórico!!!");
 
     pause();
-}
+}//fim historicoDeSalario()

@@ -84,7 +84,265 @@
 	"funcoesAuxiliares.h"
 	"funcoesVerificacoes.h"
 
-1568202392 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/departamento.c
+1568212295 source:/home/aluno/Documentos/TrabalhoArrumado/departamento.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<locale.h>
+	<time.h>
+	"departamento.h"
+	"funcionario.h"
+	"historicoDepartamento.h"
+	"historicoFuncionario.h"
+	"historicoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacoes.h"
+	"funcoesAuxiliares.h"
+
+1567870424 /home/aluno/Documentos/TrabalhoArrumado/departamento.h
+
+1568215150 /home/aluno/Documentos/TrabalhoArrumado/funcionario.h
+
+1567870612 /home/aluno/Documentos/TrabalhoArrumado/historicoDepartamento.h
+
+1567870693 /home/aluno/Documentos/TrabalhoArrumado/historicoFuncionario.h
+
+1567870632 /home/aluno/Documentos/TrabalhoArrumado/historicoSalario.h
+
+1567870516 /home/aluno/Documentos/TrabalhoArrumado/funcoesPesquisa.h
+
+1568200922 /home/aluno/Documentos/TrabalhoArrumado/funcoesVerificacoes.h
+
+1568067290 /home/aluno/Documentos/TrabalhoArrumado/funcoesAuxiliares.h
+
+1568217252 source:/home/aluno/Documentos/TrabalhoArrumado/funcionario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+	"historicoFuncionario.h"
+	"historicoDepartamento.h"
+	"historicoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacoes.h"
+	"funcoesAuxiliares.h"
+
+1568216132 source:/home/aluno/Documentos/TrabalhoArrumado/funcoesAuxiliares.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	<time.h>
+	"departamento.h"
+	"funcionario.h"
+	"funcoesPesquisa.h"
+
+1568200420 source:/home/aluno/Documentos/TrabalhoArrumado/funcoesPesquisa.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+
+1568201305 source:/home/aluno/Documentos/TrabalhoArrumado/funcoesVerificacao.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+
+1568215209 source:/home/aluno/Documentos/TrabalhoArrumado/main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+	"funcoesAuxiliares.h"
+	"funcoesVerificacoes.h"
+
+1568212295 source:/home/aluno/Documentos/Nova pasta/TrabalhoArrumado/departamento.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<locale.h>
+	<time.h>
+	"departamento.h"
+	"funcionario.h"
+	"historicoDepartamento.h"
+	"historicoFuncionario.h"
+	"historicoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacoes.h"
+	"funcoesAuxiliares.h"
+
+1567870424 /home/aluno/Documentos/Nova pasta/TrabalhoArrumado/departamento.h
+
+1568215150 /home/aluno/Documentos/Nova pasta/TrabalhoArrumado/funcionario.h
+
+1567870612 /home/aluno/Documentos/Nova pasta/TrabalhoArrumado/historicoDepartamento.h
+
+1567870693 /home/aluno/Documentos/Nova pasta/TrabalhoArrumado/historicoFuncionario.h
+
+1567870632 /home/aluno/Documentos/Nova pasta/TrabalhoArrumado/historicoSalario.h
+
+1567870516 /home/aluno/Documentos/Nova pasta/TrabalhoArrumado/funcoesPesquisa.h
+
+1568200922 /home/aluno/Documentos/Nova pasta/TrabalhoArrumado/funcoesVerificacoes.h
+
+1568067290 /home/aluno/Documentos/Nova pasta/TrabalhoArrumado/funcoesAuxiliares.h
+
+1568217252 source:/home/aluno/Documentos/Nova pasta/TrabalhoArrumado/funcionario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+	"historicoFuncionario.h"
+	"historicoDepartamento.h"
+	"historicoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacoes.h"
+	"funcoesAuxiliares.h"
+
+1568216132 source:/home/aluno/Documentos/Nova pasta/TrabalhoArrumado/funcoesAuxiliares.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	<time.h>
+	"departamento.h"
+	"funcionario.h"
+	"funcoesPesquisa.h"
+
+1568200420 source:/home/aluno/Documentos/Nova pasta/TrabalhoArrumado/funcoesPesquisa.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+
+1568201305 source:/home/aluno/Documentos/Nova pasta/TrabalhoArrumado/funcoesVerificacao.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+
+1568215209 source:/home/aluno/Documentos/Nova pasta/TrabalhoArrumado/main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+	"funcoesAuxiliares.h"
+	"funcoesVerificacoes.h"
+
+1568212295 source:/home/edmilson/Documentos/faculdade/TrabalhoArrumado/departamento.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<locale.h>
+	<time.h>
+	"departamento.h"
+	"funcionario.h"
+	"historicoDepartamento.h"
+	"historicoFuncionario.h"
+	"historicoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacoes.h"
+	"funcoesAuxiliares.h"
+
+1567870424 /home/edmilson/Documentos/faculdade/TrabalhoArrumado/departamento.h
+
+1568215150 /home/edmilson/Documentos/faculdade/TrabalhoArrumado/funcionario.h
+
+1567870612 /home/edmilson/Documentos/faculdade/TrabalhoArrumado/historicoDepartamento.h
+
+1567870693 /home/edmilson/Documentos/faculdade/TrabalhoArrumado/historicoFuncionario.h
+
+1567870632 /home/edmilson/Documentos/faculdade/TrabalhoArrumado/historicoSalario.h
+
+1567870516 /home/edmilson/Documentos/faculdade/TrabalhoArrumado/funcoesPesquisa.h
+
+1568200922 /home/edmilson/Documentos/faculdade/TrabalhoArrumado/funcoesVerificacoes.h
+
+1568226026 /home/edmilson/Documentos/faculdade/TrabalhoArrumado/funcoesAuxiliares.h
+
+1568217252 source:/home/edmilson/Documentos/faculdade/TrabalhoArrumado/funcionario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+	"historicoFuncionario.h"
+	"historicoDepartamento.h"
+	"historicoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacoes.h"
+	"funcoesAuxiliares.h"
+
+1568226282 source:/home/edmilson/Documentos/faculdade/TrabalhoArrumado/funcoesAuxiliares.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	<time.h>
+	"departamento.h"
+	"funcionario.h"
+	"funcoesPesquisa.h"
+
+1568225977 source:/home/edmilson/Documentos/faculdade/TrabalhoArrumado/funcoesPesquisa.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+
+1568225883 source:/home/edmilson/Documentos/faculdade/TrabalhoArrumado/funcoesVerificacao.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+
+1568225648 source:/home/edmilson/Documentos/faculdade/TrabalhoArrumado/main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+	"funcoesAuxiliares.h"
+	"funcoesVerificacoes.h"
+
+1568227061 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/departamento.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -102,7 +360,7 @@
 
 1567870424 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/departamento.h
 
-1567870798 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcionario.h
+1568215150 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcionario.h
 
 1567870612 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/historicoDepartamento.h
 
@@ -114,9 +372,9 @@
 
 1568200922 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesVerificacoes.h
 
-1568067290 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesAuxiliares.h
+1568226026 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesAuxiliares.h
 
-1568069098 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcionario.c
+1568226953 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcionario.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -125,12 +383,13 @@
 	"departamento.h"
 	"funcionario.h"
 	"historicoFuncionario.h"
+	"historicoDepartamento.h"
 	"historicoSalario.h"
 	"funcoesPesquisa.h"
 	"funcoesVerificacoes.h"
 	"funcoesAuxiliares.h"
 
-1568200873 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesAuxiliares.c
+1568226282 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesAuxiliares.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -141,7 +400,7 @@
 	"funcionario.h"
 	"funcoesPesquisa.h"
 
-1568200420 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesPesquisa.c
+1568225977 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesPesquisa.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -150,7 +409,7 @@
 	"departamento.h"
 	"funcionario.h"
 
-1568201305 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesVerificacao.c
+1568225883 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesVerificacao.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -159,7 +418,7 @@
 	"departamento.h"
 	"funcionario.h"
 
-1568202539 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/main.c
+1568225648 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/main.c
 	<stdio.h>
 	<stdlib.h>
 	<locale.h>

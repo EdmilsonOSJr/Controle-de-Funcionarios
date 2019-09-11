@@ -6,6 +6,7 @@
 #include"departamento.h"
 #include"funcionario.h"
 
+///Sverifica se a string fornecida tem apenas números
 int verificaDigito(char * dado){
     int i;
     RetiraSequenciaDeEscape(dado);
@@ -13,9 +14,9 @@ int verificaDigito(char * dado){
         if(isdigit(dado[i])==0)
             return 0;
     return 1;
-}
+}//fim da pesquisa verificaDigito()
 
-//Verifica CPF que recebeu retornando 1 para CPF valido e 0 caso contrário
+///Verifica CPF, se é repetido e se é um cpf válido, que recebeu retornando 1 para CPF valido e 0 caso contrário
 int VerificaCpf(FILE*fun,char *cpf){
     int i, j, digito1 = 0, digito2 = 0;
     //printf("%d",strlen(cpf));
@@ -109,7 +110,7 @@ int verficaData(char *data){
 
 }//fim verificaData()
 
-//Recebe um ponteiro para um arquivo e verifica se o mesmo está vazio retornando 1 para vazios e 0 caso contrário
+///Recebe um ponteiro para um arquivo e verifica se o mesmo está vazio retornando 1 para vazios e 0 caso contrário
 int VerificaArquivoVazio(FILE* arq){
 
     fseek(arq,0,SEEK_END);

@@ -8,15 +8,15 @@
 #include "funcionario.h"
 #include "funcoesPesquisa.h"
 
-//Nessa funçaõ o \n do vetor de char é trocado pelo \0
+///Nessa função o '\n' do vetor de char é trocado pelo '\0'
 void RetiraSequenciaDeEscape(char *palavra){
 
     if(palavra[strlen(palavra) - 1] == '\n')
         palavra[strlen(palavra) - 1] = '\0';
 }//fim RetiraSequenciaDeEscape()
 
-//Essa função é chamadda para sair de um loop que pergunta se o usuário quer sair da opção que escolheu. Nela é validada a opção
-//de sair que n será uma letra apenas 1 para sair e 2 para continuar
+///Essa função é chamadda para sair de um loop que pergunta se o usuário quer sair da opção que escolheu. Nela é validada a opção
+///de sair e n será uma letra apenas 1 para sair e 2 para continuar
 int sairDoLoop(){
     char sair[3];
     int sairInteiro;
@@ -46,32 +46,32 @@ int sairDoLoop(){
 
 }//Fim sairDoLoop()
 
-//Essa função recebe o ponteiro para o arquivo do funcionario.dat e verifica o último id, retornado o póximo válido
+///Essa função recebe o ponteiro para o arquivo do funcionario.dat e verifica o último id, retornado o póximo válido
 long IncrementaIdFun(FILE* fun){
     long proximoId,tamanho;
 
     fseek(fun,0,SEEK_END);
     tamanho=ftell(fun);
-    proximoId=tamanho/sizeof(TFuncionario);
-
+    proximoId=tamanho/sizeof(TFuncionario); /// Divide o tamanho do arquivo pelo tamanho da struct, conseguindo assim
+                                            /// o número de registro
     return ++proximoId;
 
 }//fim IncrementaIdFun()
 
-//Essa função recebe o ponteiro para o arquivo do departamento.dat e verifica o último id, retornado o póximo válido
+///Essa função recebe o ponteiro para o arquivo do departamento.dat e verifica o último id, retornado o póximo válido
 long IncrementaID(FILE* dep){
     long proximoId=0,tamanho;
 
     fseek(dep,0,SEEK_END);
     tamanho=ftell(dep);
-    proximoId=tamanho/sizeof(TDepartamento);
+    proximoId=tamanho/sizeof(TDepartamento); /// Divide o tamanho do arquivo pelo tamanho da struct, conseguindo assim
+                                             /// o número de registro
 
-    //printf("\n%li\n",++proximoId);
     return ++proximoId;
 
 }//fim incrementaId()
 
-//Função usada para imprimir os dados de um funcionário incluindo seu departamento
+///Função usada para imprimir os dados de um funcionário incluindo seu departamento
 void apresentaDadosDoFuncionario(FILE* fun, FILE *dep, int posicao){
 
     TDepartamento d;
@@ -80,7 +80,7 @@ void apresentaDadosDoFuncionario(FILE* fun, FILE *dep, int posicao){
     fseek(fun,posicao*sizeof(f),SEEK_SET);
     fread(&f,sizeof(f),1,fun);
 
-    system("clear");
+    system("clear || cls");
     printf("\n=======================\n");
     printf("\nDADOS DO FUNCIONÁRIO\n");
     printf("\n=======================");
@@ -107,8 +107,9 @@ void apresentaDadosDoFuncionario(FILE* fun, FILE *dep, int posicao){
     printf("\nCEP: %s",f.CEP);
 }//fim apresentaDadosDoFuncionario()
 
+///Essa função retorna a data atual dosistema
 void dataAtual(int *d,int *m,int *a){
-    struct tm *local;
+    struct tm *local; /// struct da biblioteca
         time_t t;
 
         t = time(&t);
@@ -121,6 +122,7 @@ void dataAtual(int *d,int *m,int *a){
 
 }
 
+/// Pausa o programa e espera que o usuário aperte enter
 void pause (){
     setbuf(stdin, NULL);
     printf("\n");

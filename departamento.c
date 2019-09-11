@@ -81,6 +81,7 @@ void imprimir4(FILE* hfun){
     }
 }
 
+/// Imprimi todos os dados dos departamentos cadastrados
 void imprimir(FILE*dep){
 
     int i,j;
@@ -106,9 +107,9 @@ void imprimir(FILE*dep){
         }
     }
     pause();
-}
+}//fim imprimir()
 
-//cadastra os dados no arquivo departamento.dat
+///cadastra os dados no arquivo departamento.dat
 void CadastraDepartamento(FILE*dep,FILE*hdep){
 
     int sair,m,a,dia;
@@ -167,7 +168,7 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
         d.Ramal=ramalnumero;
         d.id=IncrementaID(dep);
 
-        d.id_gerente=-1;
+        d.id_gerente=-1; /// o valor -1 é o default
 
 
         dataAtual(&dia,&m,&a);
@@ -198,7 +199,7 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
 
 }//fim cadastraDepartamento()
 
-//Altera o gerente no arquivo departamento.dat e no historicodepartamento.dat, isso se o novo id n for um id existente
+///Altera o gerente no arquivo departamento.dat e no historicodepartamento.dat, isso se o novo id n for um id existente
 void AlterarGerente(FILE*dep,FILE*fun,FILE*hdep){
 
     int posicao,posicaoNovoGerente,sair,dia,mes,ano;
@@ -257,28 +258,32 @@ void AlterarGerente(FILE*dep,FILE*fun,FILE*hdep){
 
                         fseek(fun,posicaoNovoGerente*sizeof(f),SEEK_SET);
                         fread(&f,sizeof(f),1,fun);
+                        printf("\nnovo gerente: %li",f.id);
+                        printf("\nnovo gerente: %li",d.id_gerente);
+                        if(f.id!=d.id_gerente){
+                            dataAtual(&dia,&mes,&ano);
 
+                            sprintf(dataAt,"%d/%d/%d",dia,mes,ano);
 
-                        dataAtual(&dia,&mes,&ano);
+                            RetiraSequenciaDeEscape(dataAt);
 
-                        sprintf(dataAt,"%d/%d/%d",dia,mes,ano);
+                            strcpy(hd.data,dataAt);
 
-                        RetiraSequenciaDeEscape(dataAt);
+                            d.id_gerente=f.id;
+                            hd.id_gerente=f.id;
+                            hd.id_departamento=idDepartamento;
 
-                        strcpy(hd.data,dataAt);
+                            fseek(dep,posicao*sizeof(d),SEEK_SET);
+                            fwrite(&d,sizeof(d),1,dep);
 
-                        d.id_gerente=f.id;
-                        hd.id_gerente=f.id;
-                        hd.id_departamento=idDepartamento;
+                            fseek(hdep,0,SEEK_END);
+                            fwrite(&hd,sizeof(hd),1,hdep);
 
-                        fseek(dep,posicao*sizeof(d),SEEK_SET);
-                        fwrite(&d,sizeof(d),1,dep);
-
-                        fseek(hdep,0,SEEK_END);
-                        fwrite(&hd,sizeof(hd),1,hdep);
-
-                        fflush(dep);
-                        fflush(hdep);
+                            fflush(dep);
+                            fflush(hdep);
+                        }
+                        else
+                            printf("\nEste é o gerente atual!!!");
                     }
                 }
             }
