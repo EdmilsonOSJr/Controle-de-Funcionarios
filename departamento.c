@@ -83,8 +83,6 @@ void imprimir4(FILE* hfun){
 
 /// Imprimi todos os dados dos departamentos cadastrados
 void imprimir(FILE*dep){
-
-    int i,j;
     TDepartamento dp;
 
     fseek(dep,0,SEEK_END);//Usa para ver se tem dados no arquivo ou não
@@ -93,17 +91,17 @@ void imprimir(FILE*dep){
         printf("\nSem dados no arquio");
     }
     else{
-        system("clear");
+        system("clear || cls");
         rewind(dep);
         while(fread(&dp, sizeof(dp), 1, dep)){
-            printf("\nDados::::::::::::::::::::::::::\n");
-            printf("\n%li\n",dp.id);
-            for(i=0;i<strlen(dp.nome);i++)
-                printf("%c",dp.nome[i]);
-            printf("\n%li\n",dp.id_gerente);
-            for(j=0;j<strlen(dp.sigla);j++)
-               printf("%c",dp.sigla[j]);
-            printf("\n%hu\n",dp.Ramal);
+            printf("\n======================\n");
+            printf("\n  DADOS DO DEPARTAMENTO\n");
+            printf("\n======================\n");
+            printf("\nID: %li",dp.id);
+            printf("\nNome: %s",dp.nome);
+            printf("\nId gerente: %li",dp.id_gerente);
+            printf("\nSigla: %s",dp.sigla);
+            printf("\nRamal: %hu\n",dp.Ramal);
         }
     }
     pause();

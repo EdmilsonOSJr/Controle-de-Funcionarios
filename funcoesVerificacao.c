@@ -5,6 +5,7 @@
 #include<ctype.h>
 #include"departamento.h"
 #include"funcionario.h"
+#include"funcoesAuxiliares.h"
 
 ///Sverifica se a string fornecida tem apenas números
 int verificaDigito(char * dado){

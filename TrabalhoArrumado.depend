@@ -428,3 +428,90 @@
 	"funcoesAuxiliares.h"
 	"funcoesVerificacoes.h"
 
+1568229950 source:c:\users\edmilson\documents\trabalhoatualizado\departamento.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	<locale.h>
+	<time.h>
+	"departamento.h"
+	"funcionario.h"
+	"historicoDepartamento.h"
+	"historicoFuncionario.h"
+	"historicoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacoes.h"
+	"funcoesAuxiliares.h"
+
+1567870424 c:\users\edmilson\documents\trabalhoatualizado\departamento.h
+
+1568215150 c:\users\edmilson\documents\trabalhoatualizado\funcionario.h
+
+1567870612 c:\users\edmilson\documents\trabalhoatualizado\historicodepartamento.h
+
+1567870693 c:\users\edmilson\documents\trabalhoatualizado\historicofuncionario.h
+
+1567870632 c:\users\edmilson\documents\trabalhoatualizado\historicosalario.h
+
+1567870516 c:\users\edmilson\documents\trabalhoatualizado\funcoespesquisa.h
+
+1568200922 c:\users\edmilson\documents\trabalhoatualizado\funcoesverificacoes.h
+
+1568226026 c:\users\edmilson\documents\trabalhoatualizado\funcoesauxiliares.h
+
+1568232975 source:c:\users\edmilson\documents\trabalhoatualizado\funcionario.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+	"historicoFuncionario.h"
+	"historicoDepartamento.h"
+	"historicoSalario.h"
+	"funcoesPesquisa.h"
+	"funcoesVerificacoes.h"
+	"funcoesAuxiliares.h"
+
+1568230004 source:c:\users\edmilson\documents\trabalhoatualizado\funcoesauxiliares.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	<time.h>
+	"departamento.h"
+	"funcionario.h"
+	"funcoesPesquisa.h"
+
+1568225977 source:c:\users\edmilson\documents\trabalhoatualizado\funcoespesquisa.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+
+1568225648 source:c:\users\edmilson\documents\trabalhoatualizado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+	"funcoesAuxiliares.h"
+	"funcoesVerificacoes.h"
+
+1568234308 source:c:\users\edmilson\documents\trabalhoatualizado\funcoesverificacao.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<locale.h>
+	<ctype.h>
+	"departamento.h"
+	"funcionario.h"
+	"funcoesAuxiliares.h"
+
