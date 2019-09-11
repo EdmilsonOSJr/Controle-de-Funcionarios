@@ -121,7 +121,7 @@ void CadastraDepartamento(FILE*dep,FILE*hdep){
     THistoricoDepartamento hd;
 
     do{
-        system("clear");
+        system("clear || cls");
         printf("\n================================\n");
         printf("\nFORNEÇA OS DADOS DO DEPARTAMENTO\n");
         printf("\n================================\n");
@@ -214,7 +214,7 @@ void AlterarGerente(FILE*dep,FILE*fun,FILE*hdep){
         if(VerificaArquivoVazio(dep)==1)//verifica se o arquivo está vazio
             printf("\nNenhum departamento cadastrado\n");
         else{
-            system("clear");
+            system("clear || cls");
             printf("\n================================\n");
             printf("\nFORNEÇA OS DADOS DO NOVO GERENTE\n");
             printf("\n================================\n");

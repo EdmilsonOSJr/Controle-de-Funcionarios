@@ -8,6 +8,7 @@
 #include "funcionario.h"
 #include "funcoesPesquisa.h"
 
+
 ///Nessa função o '\n' do vetor de char é trocado pelo '\0'
 void RetiraSequenciaDeEscape(char *palavra){
 

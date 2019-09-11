@@ -342,7 +342,7 @@
 	"funcoesAuxiliares.h"
 	"funcoesVerificacoes.h"
 
-1568227061 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/departamento.c
+1568229950 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/departamento.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -374,7 +374,7 @@
 
 1568226026 /home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesAuxiliares.h
 
-1568226953 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcionario.c
+1568229927 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcionario.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -389,7 +389,7 @@
 	"funcoesVerificacoes.h"
 	"funcoesAuxiliares.h"
 
-1568226282 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesAuxiliares.c
+1568230004 source:/home/edmilson/Documentos/GITHUB/TrabalhoAtualizado/funcoesAuxiliares.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

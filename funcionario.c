@@ -61,7 +61,7 @@ void CadastrarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
         hs.id_funcionario=pid;
 
         do{
-            printf("\nForneça a data de nascimento do funcionário: "); ///Apenas sai do loop se fornecer uma data válida
+            printf("\nForneça a data de nascimento do funcionário (dd/mm/aaa): "); ///Apenas sai do loop se fornecer uma data válida
             setbuf(stdin,NULL);
             fgets(dataNascimento,12,stdin);
             setbuf(stdin,NULL);
@@ -268,7 +268,7 @@ void FolhaDePagamento(FILE*fun){
                 fseek(fun,posicao*sizeof(f),SEEK_SET);
                 fread(&f,sizeof(f),1,fun);
 
-                system("clear");
+                system("clear || cls");
                 printf("\n======================\n");
                 printf("\nFOLHA DE PAGAMENTO\n");
                 printf("\n======================\n");
@@ -297,7 +297,7 @@ void RelatorioFuncionariosPorDepartamento(FILE *fun,FILE *dep){
     if(VerificaArquivoVazio(dep)==1)
         printf("\nNenhum departamento cadastrado!!!\n");
     else{
-        system("clear");
+        system("clear || cls");
         printf("\n================================\n");
         printf("\nFUNCIONÁRIO POR DEPARTAMENTO\n");
         printf("\n================================\n");
@@ -346,7 +346,7 @@ void AlterarSalario(FILE*fun,FILE*hsal){
 
     do{
 
-        system("clear");
+        system("clear || cls");
         printf("\n================================\n");
         printf("\nFORNEÇA O NOVO SALÁRIO\n");
         printf("\n================================\n");
@@ -413,7 +413,7 @@ void AlterarDepartamento(FILE*fun,FILE*hfun,FILE*dep){
         else{
             do{
 
-                system("clear");
+                system("clear || cls");
                 printf("\n================================\n");
                 printf("\nFORNEÇA OS NOVOS DADOS\n");
                 printf("\n================================\n");
@@ -498,7 +498,7 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
             printf("\nNenhum funcionario cadastrado!!!\n");
         else{
 
-            system("clear");
+            system("clear || cls");
             printf("\n================================\n");
             printf("\nFORNEÇA OS DADOS DO FUNCIONÁRIO\n");
             printf("\n================================\n");
@@ -533,7 +533,7 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                 hs.id_funcionario=f.id;
 
                 do{
-                    printf("\nForneça a data de nascimento do funcionário: ");
+                    printf("\nForneça a data de nascimento do funcionário(dd/mm/aaa): ");
                     setbuf(stdin,NULL);
                     fgets(dataNascimento,12,stdin);
                     setbuf(stdin,NULL);
@@ -557,7 +557,6 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                     RetiraSequenciaDeEscape(cpf);
                     //printf("\n%d\n",strlen(cpf));
                     cpfexiste=VerificaCpf(fun,cpf);
-                    printf("\n%d\n",cpfexiste);
                     if(cpfexiste==0)
                         printf("\nCpf inválido!!!\n");
 
@@ -779,7 +778,7 @@ void historicoDeSalario(FILE* hsal,FILE*fun){
     printf("\nForneça os meses inicial e final: ");
     scanf("\n%hu%hu",&mesInicial,&mesFinal);
 
-    system("clear");
+    system("clear || cls");
     printf("\n================================\n");
     printf("\nHISTÓRICO DO SALÁRIO\n");
     printf("\n================================\n");
