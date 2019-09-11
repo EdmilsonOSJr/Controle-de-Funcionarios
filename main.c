@@ -80,7 +80,7 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
 
             case 2:
                 do{
-                    //system("clear || cls");
+                    system("clear || cls");
                     for(i=0;i<2;i++)
                         printf("\n=======================================================");
                     printf("\n====================== Consulta =======================");
@@ -110,18 +110,6 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
                         break;
 
                         case 3:
-                        imprimir2(hdepartamento);
-                        break;
-
-                        case 4:
-                        imprimir3(hsalario);
-                        break;
-
-                        case 5:
-                        imprimir4(hfuncionario);
-                        break;
-
-                        case 6:
                         break;
 
                         default:
@@ -129,7 +117,7 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
                             pause();
                         }
                     }
-                }while(atoi(opcao2)!=6);
+                }while(atoi(opcao2)!=3);
             break;
 
             case 3:
