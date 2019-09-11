@@ -557,6 +557,7 @@ void AlterarFuncionario(FILE*fun,FILE*dep,FILE*hsal,FILE*hfun){
                     RetiraSequenciaDeEscape(cpf);
                     //printf("\n%d\n",strlen(cpf));
                     cpfexiste=VerificaCpf(fun,cpf);
+
                     if(cpfexiste==0)
                         printf("\nCpf inválido!!!\n");
 
