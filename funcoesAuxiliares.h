@@ -13,4 +13,6 @@ void apresentaDadosDoFuncionario(FILE*, FILE *, int);
 //void coletaDadosDoFuncionario(FILE*,FILE*,FILE*,FILE*);
 
 void dataAtual(int*,int*,int*);
+
+void  pause();
 #endif // FUNCOESAUXILIARES_H_INCLUDED

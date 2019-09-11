@@ -3,13 +3,10 @@
 #include <string.h>
 #include <locale.h>
 #include<ctype.h>
-#include"Departamento.h"
-#include"Funcionario.h"
-#include"HistoricoDepartamento.h"
-#include"HistoricoFuncionario.h"
-#include"HistoricoSalario.h"
-#include"funcoesPesquisa.h"
-#include"funcoesVerificacao.h"
+#include"departamento.h"
+#include"funcionario.h"
+
+
 
 //Retorna a posição da matricula caso exista, senão retorna -1
 int PesquisaMatricula(FILE *fun,char *matricula){

@@ -3,13 +3,17 @@
 #include <string.h>
 #include <locale.h>
 #include<ctype.h>
-#include"Departamento.h"
-#include"Funcionario.h"
-#include"HistoricoDepartamento.h"
-#include"HistoricoFuncionario.h"
-#include"HistoricoSalario.h"
-#include"funcoesPesquisa.h"
-#include"funcoesVerificacao.h"
+#include"departamento.h"
+#include"funcionario.h"
+
+int verificaDigito(char * dado){
+    int i;
+    RetiraSequenciaDeEscape(dado);
+    for(i=0;i<strlen(dado)-1;i++)
+        if(isdigit(dado[i])==0)
+            return 0;
+    return 1;
+}
 
 //Verifica CPF que recebeu retornando 1 para CPF valido e 0 caso contrário
 int VerificaCpf(FILE*fun,char *cpf){
@@ -114,4 +118,3 @@ int VerificaArquivoVazio(FILE* arq){
     }
     return 0;
 }//fim VerificaArquivoVazio()
-

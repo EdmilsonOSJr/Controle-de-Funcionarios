@@ -4,14 +4,9 @@
 #include <locale.h>
 #include <ctype.h>
 #include <time.h>
-#include "Departamento.h"
-#include "Funcionario.h"
-#include "HistoricoDepartamento.h"
-#include "HistoricoFuncionario.h"
-#include "HistoricoSalario.h"
+#include "departamento.h"
+#include "funcionario.h"
 #include "funcoesPesquisa.h"
-#include "funcoesVerificacao.h"
-
 
 //Nessa funçaõ o \n do vetor de char é trocado pelo \0
 void RetiraSequenciaDeEscape(char *palavra){
@@ -28,6 +23,7 @@ int sairDoLoop(){
 
     do
     {
+        printf("\n");
         printf("\n===========================");
         printf("\nDeseja sair?");
         printf("\n===========================");
@@ -84,8 +80,10 @@ void apresentaDadosDoFuncionario(FILE* fun, FILE *dep, int posicao){
     fseek(fun,posicao*sizeof(f),SEEK_SET);
     fread(&f,sizeof(f),1,fun);
 
-    printf("\nDados do Funcionario\n");
+    system("clear");
     printf("\n=======================\n");
+    printf("\nDADOS DO FUNCIONÁRIO\n");
+    printf("\n=======================");
 
     printf("\nId: %li",f.id);
     printf("\nMatricula: %s",f.matricula);
@@ -101,7 +99,7 @@ void apresentaDadosDoFuncionario(FILE* fun, FILE *dep, int posicao){
 
     printf("\nDepartamento: %s",d.nome);
     printf("\nCidade: %s",f.cidade);
-    printf("\nemail: %s",f.email);
+    printf("\nEmail: %s",f.email);
     printf("\nBairro: %s",f.bairro);
     printf("\nComplemento: %s",f.complemento);
     printf("\nNumero: %u",f.Numero);
@@ -121,4 +119,11 @@ void dataAtual(int *d,int *m,int *a){
         *a = local->tm_year + 1900;
         *d = local->tm_mday;
 
+}
+
+void pause (){
+    setbuf(stdin, NULL);
+    printf("\n");
+    printf("\nTecle ENTER para continuar...");
+    getchar();
 }

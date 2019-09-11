@@ -2,19 +2,19 @@
 #include <stdlib.h>
 #include <locale.h>
 #include <ctype.h>
-#include"Departamento.h"
-#include"Funcionario.h"
-#include"HistoricoDepartamento.h"
-#include"HistoricoFuncionario.h"
-#include"HistoricoSalario.h"
+#include"departamento.h"
+#include"funcionario.h"
 #include "funcoesAuxiliares.h"
+#include "funcoesVerificacoes.h"
+
 
 void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdepartamento,FILE *hsalario){
     int i;
-    char opcao[3],opcao1[3],opcao2[3],opcao3[3],opcao4[3];
+    char opcao[10],opcao1[10],opcao2[10],opcao3[10],opcao4[10];
 
     do{
-        //system("clear");//printf("\e[H\e[2J");
+
+        system("clear");//printf("\e[H\e[2J");
         for(i=0;i<2;i++)
             printf("\n=======================================================");
         printf("\n====================== Opções =========================");
@@ -23,22 +23,24 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
 
         printf("\n");
         printf("\nEscolha uma opção: \n");
-        printf("\n[1] Cadastrar    \n[2] Consultar    \n[3] Alterar      \n[4] relatorio      \n[5] Sair\n");
+        printf("\n[1] Cadastrar    \n[2] Consultar    \n[3] Alterar      \n[4] relatório      \n[5] Sair\n");
         printf("\n=> ");
         setbuf(stdin,NULL);
-        fgets(opcao,3,stdin);
+        fgets(opcao,10,stdin);
         setbuf(stdin,NULL);
 
-        if(isdigit(opcao[0])==0)
+        if(verificaDigito(opcao)==0){
             printf("\nComando incorreto!!!!\n");
+            pause();
+        }
         else{
-            switch (opcao[0]){
-            case '1':
+            switch (atoi(opcao)){
+            case 1:
                 do{
-                    //system("clear");
+                    system("clear");
                     for(i=0;i<2;i++)
                         printf("\n=======================================================");
-                    printf("\n====================== cadastro =========================");
+                    printf("\n====================== cadastro =======================");
                     for(i=0;i<2;i++)
                         printf("\n=======================================================");
 
@@ -47,33 +49,36 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
                     printf("\n[1] Cadastrar funcionário     \n[2] Cadastrar departamento      \n[3] Sair\n");
                     printf("\n=> ");
                     setbuf(stdin,NULL);
-                    fgets(opcao1,3,stdin);
+                    fgets(opcao1,10,stdin);
                     setbuf(stdin,NULL);
 
-                    if(isdigit(opcao1[0])==0)
+                    if(verificaDigito(opcao1)==0){
                         printf("\nComando incorreto!!!!\n");
+                        pause();
+                    }
                     else{
-                        switch (opcao1[0]){
-                        case '1':
+                        switch (atoi(opcao1)){
+                        case 1:
                         CadastrarFuncionario(funcionario,departamento,hsalario,hfuncionario);
                         break;
 
-                        case '2':
+                        case 2:
                         CadastraDepartamento(departamento,hdepartamento);
                         break;
 
-                        case '3':
+                        case 3:
                         break;
 
                         default:
                             printf("\nComando invalido!!!\n");
+                            pause();
                         }
                     }
                 }while(atoi(opcao1)!=3);
 
             break;
 
-            case '2':
+            case 2:
                 do{
                     //system("clear");
                     for(i=0;i<2;i++)
@@ -87,46 +92,49 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
                     printf("\n[1] Consultar funcionário     \n[2] Consultar departamento      \n[3] Sair\n");
                     printf("\n=> ");
                     setbuf(stdin,NULL);
-                    fgets(opcao2,3,stdin);
+                    fgets(opcao2,10,stdin);
                     setbuf(stdin,NULL);
 
-                    if(isdigit(opcao2[0])==0)
+                    if(verificaDigito(opcao2)==0){
                         printf("\nComando incorreto!!!!\n");
+                        pause();
+                    }
                     else{
-                        switch (opcao2[0]){
-                        case '1':
+                        switch (atoi(opcao2)){
+                        case 1:
                         ConsultaFuncionarioporMatricula(funcionario,departamento);
                         break;
 
-                        case '2':
+                        case 2:
                         imprimir(departamento);
                         break;
 
-                        case '3':
+                        case 3:
                         imprimir2(hdepartamento);
                         break;
 
-                        case '4':
+                        case 4:
                         imprimir3(hsalario);
                         break;
 
-                        case '5':
+                        case 5:
                         imprimir4(hfuncionario);
                         break;
 
-                        case '6':
+                        case 6:
                         break;
 
                         default:
                             printf("\nComando invalido!!!\n");
+                            pause();
                         }
                     }
-                }while(opcao2[0]!='6');
+                }while(atoi(opcao2)!=6);
             break;
 
-            case '3':
+            case 3:
                 do{
-                    //system("clear");
+                    system("clear");
                     for(i=0;i<2;i++)
                         printf("\n=======================================================");
                     printf("\n====================== Alterar ========================");
@@ -139,42 +147,45 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
                     printf("\n[4] Alterar salário de um funcionário      \n[5] Sair\n");
                     printf("\n=> ");
                     setbuf(stdin,NULL);
-                    fgets(opcao3,3,stdin);
+                    fgets(opcao3,10,stdin);
                     setbuf(stdin,NULL);
 
-                    if(isdigit(opcao3[0])==0)
+                    if(verificaDigito(opcao3)==0){
                         printf("\nComando incorreto!!!!\n");
+                        pause();
+                    }
                     else{
-                        switch (opcao3[0]){
-                        case '1':
+                        switch (atoi(opcao3)){
+                        case 1:
                         AlterarFuncionario(funcionario,departamento,hsalario,hfuncionario);
                         break;
 
-                        case '2':
+                        case 2:
                         AlterarDepartamento(funcionario,hfuncionario,departamento);
                         break;
 
-                        case '3':
+                        case 3:
                         AlterarGerente(departamento,funcionario,hdepartamento);
                         break;
 
-                        case '4':
+                        case 4:
                         AlterarSalario(funcionario,hsalario);
                         break;
 
-                        case '5':
+                        case 5:
                         break;
 
                         default:
                             printf("\nComando invalido!!!\n");
+                            pause();
                         }
                     }
-                }while(opcao3[0]!='5');
+                }while(atoi(opcao3)!=5);
             break;
 
-            case '4':
+            case 4:
                 do{
-                    //system("clear");
+                    system("clear");
                     for(i=0;i<2;i++)
                         printf("\n=======================================================");
                     printf("\n====================== Relatório ======================");
@@ -183,52 +194,56 @@ void menu(FILE *funcionario,FILE *departamento,FILE *hfuncionario,FILE *hdeparta
 
                     printf("\n");
                     printf("\nEscolha uma opção: \n");
-                    printf("\n[1] Folhs de pagamento     \n[2] Relató de funcionário por departamento      \n[3] Histórico de salário");
+                    printf("\n[1] Folha de pagamento     \n[2] Relatório de funcionário por departamento      \n[3] Histórico de salário");
                     printf("\n[4] Gerentes de um departamento      \n[5] Sair\n");
                     printf("\n=> ");
                     setbuf(stdin,NULL);
-                    fgets(opcao4,3,stdin);
+                    fgets(opcao4,10,stdin);
                     setbuf(stdin,NULL);
 
 
-                    if(isdigit(opcao4[0])==0)
+                    if(verificaDigito(opcao4)==0){
                         printf("\nComando incorreto!!!!\n");
+                        pause();
+                    }
                     else{
-                        switch (opcao4[0]){
-                        case '1':
+                        switch (atoi(opcao4)){
+                        case 1:
                         FolhaDePagamento(funcionario);
                         break;
 
-                        case '2':
+                        case 2:
                         RelatorioFuncionariosPorDepartamento(funcionario,departamento);
                         break;
 
-                        case '3':
+                        case 3:
                         historicoDeSalario(hsalario,funcionario);
                         break;
 
-                        case '4':
+                        case 4:
                         RelatorioGerenteDeDepartamento(departamento,funcionario);
                         break;
 
-                        case '5':
+                        case 5:
                         break;
 
                         default:
                             printf("\nComando invalido!!!\n");
+                            pause();
                         }
                     }
-                }while(opcao4[0]!='5');
+                }while(atoi(opcao4)!=5);
             break;
 
-            case '5':
+            case 5:
             break;
 
             default:
                 printf("\nComando invalido!!!\n");
+                pause();
             }
         }
-    }while(opcao[0]!='5');
+    }while(atoi(opcao)!=5);
 }
 
 void iniciar(){
@@ -236,25 +251,25 @@ void iniciar(){
 
     FILE *funcionario,*departamento,*hfuncionario,*hdepartamento,*hsalario;
 
-    funcionario=fopen("funcionario.dat", "rb+");
+    funcionario=fopen("Funcionario.dat", "rb+");
     if(funcionario==NULL)
-        funcionario=fopen("funcionario.dat", "wb+");
+        funcionario=fopen("Funcionario.dat", "wb+");
 
-    departamento=fopen("departamento.dat", "rb+");
+    departamento=fopen("Departamento.dat", "rb+");
     if(departamento==NULL)
-        departamento=fopen("departamento.dat", "wb+");
+        departamento=fopen("Departamento.dat", "wb+");
 
-    hfuncionario=fopen("historicofuncionario.dat", "rb+");
+    hfuncionario=fopen("HistoricoFuncionario.dat", "rb+");
     if(hfuncionario==NULL)
-        hfuncionario=fopen("historicofuncionario.dat", "wb+");
+        hfuncionario=fopen("HistoricoFuncionario.dat", "wb+");
 
-    hdepartamento=fopen("historicodepartamento.dat", "rb+");
+    hdepartamento=fopen("HistoricoDepartamento.dat", "rb+");
     if(hdepartamento==NULL)
-        hdepartamento=fopen("historicodepartamento.dat", "wb+");
+        hdepartamento=fopen("HistoricoDepartamento.dat", "wb+");
 
-    hsalario=fopen("historicosalario.dat", "rb+");
+    hsalario=fopen("HistoricoSalario.dat", "rb+");
     if(hsalario==NULL)
-        hsalario=fopen("historicosalario.dat", "wb+");
+        hsalario=fopen("HistoricoSalario.dat", "wb+");
 
     menu(funcionario,departamento,hfuncionario,hdepartamento,hsalario);
 
@@ -270,4 +285,3 @@ int main(){
     iniciar();
     return 0;
 }
-
